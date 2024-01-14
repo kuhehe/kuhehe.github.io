@@ -242,7 +242,7 @@ if (stellar.plugins.stellar) {
       const els = document.getElementsByClassName('stellar-' + key + '-api');
       if (els != undefined && els.length > 0) {
         stellar.jQuery(() => {
-          if (key == 'timeline' || 'memos') {
+          if (key == 'timeline' || 'memos' || 'marked') {
             stellar.loadScript(stellar.plugins.marked).then(function () {
               stellar.loadScript(js, { defer: true });
             });
@@ -362,7 +362,7 @@ if (stellar.search.service) {
           }
           path = stellar.config.root + path;
           const filter = $inputArea.attr('data-filter') || '';
-          searchFunc(path, filter, 'search-input', 'search-result');
+          searchFunc(path, filter, 'search-wrapper', 'search-input', 'search-result');
         });
         $inputArea.keydown(function(e) {
           if (e.which == 13) {
