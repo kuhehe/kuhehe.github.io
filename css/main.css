@@ -5025,7 +5025,7 @@ nav.menu a.nav-item:hover {
   object-fit: cover;
   width: 100%;
   border-radius: 0;
-  aspect-ratio: 2.4;
+  aspect-ratio: 3.2;
 }
 .post-list .post-card.post.photo .cover {
   position: relative;
@@ -5034,7 +5034,7 @@ nav.menu a.nav-item:hover {
 .post-list .post-card.post.photo .cover img {
   width: 100%;
   object-fit: cover;
-  aspect-ratio: 2.4;
+  aspect-ratio: 3.2;
 }
 .post-list .post-card.post.photo .cover .cover-info {
   padding: 1.5rem 1rem;
