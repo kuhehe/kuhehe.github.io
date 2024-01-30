@@ -3912,6 +3912,7 @@ details.toc[open] >div.body section .header+.doc_tree {
   display: grid;
   grid-gap: 0.25rem 0.25rem;
   grid-template-columns: repeat(auto-fill, 32px);
+  text-align: center;
 }
 .social-wrap .social {
   line-height: 0;
