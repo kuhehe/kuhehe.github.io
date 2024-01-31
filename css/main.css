@@ -59,7 +59,7 @@
   --text-p4: #999;
   --text-meta: #ccc;
   --text-code: #14181f;
-  --theme-link: #2094f3;
+  --theme-link: #4ed0b2;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -5652,7 +5652,7 @@ body>.sitebg .siteblur:hover {
   left: 0;
   right: 0;
   height: 1px;
-  opacity: 0.8;
+  opacity: 0;
   background: var(--theme-link);
   transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
