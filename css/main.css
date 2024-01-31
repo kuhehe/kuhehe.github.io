@@ -59,7 +59,7 @@
   --text-p4: #999;
   --text-meta: #ccc;
   --text-code: #14181f;
-  --theme-link: #4ed0b2;
+  --theme-link: #1ebe9e;
 }
 @media (prefers-color-scheme: dark) {
   :root {
