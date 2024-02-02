@@ -337,12 +337,26 @@ a.button.start.gradient {
   background: none;
   padding: 8px;
   line-height: 0;
-  font-size: 24px;
+  font-size: 28px;
   margin: 0;
+  display: flex;
 }
-.l_body.mobile.sidebar .float-panel {
-  box-shadow: 0 4px 8px 0px rgba(0,0,0,0.1);
-  transform: translateY(-2px);
+.sidebar-toggle.mobile >* {
+  width: auto;
+  height: 28px;
+}
+.sidebar-toggle.mobile >* path#sep {
+  transition: transform 0.2s ease-out;
+  -moz-transition: transform 0.2s ease-out;
+  -webkit-transition: transform 0.2s ease-out;
+  -o-transition: transform 0.2s ease-out;
+}
+.l_body.mobile.sidebar .sidebar-toggle.mobile svg g {
+  fill: currentColor;
+  fill-opacity: 0.3;
+}
+.l_body.mobile.sidebar .sidebar-toggle.mobile svg g path#sep {
+  transform: translateX(2px);
 }
 .l_body.mobile.sidebar .sidebar-toggle.mobile {
   background: var(--card);
@@ -1127,7 +1141,7 @@ div.toast.show {
 .md-text .article-footer .header {
   font-weight: 500;
   color: var(--text-p2);
-  font-size: calc(17px + 4px);
+  font-size: calc(17px + 2px);
 }
 .md-text .article-footer .body {
   --fsp: calc(17px - 2px);
@@ -1405,7 +1419,7 @@ div.toast.show {
   text-decoration: underline;
   font-weight: 500;
 }
-.nav-wrap {
+.navbar {
   padding: 0 1rem;
   z-index: 8;
   top: 0;
@@ -1415,40 +1429,40 @@ div.toast.show {
   margin-bottom: 1px;
   margin-top: -8px;
 }
-.nav-wrap:after {
+.navbar:after {
   content: '';
-  width: calc(100% - 2 * 1rem);
   height: 2px;
   border-radius: 2px;
   position: absolute;
   bottom: 0;
   left: 1rem;
+  right: 1rem;
   background: var(--block-hover);
 }
-nav.sub {
+.navbar nav {
   display: flex;
   overflow: scroll visible;
   font-size: 0.875rem;
 }
-nav.sub::-webkit-scrollbar {
+.navbar nav::-webkit-scrollbar {
   height: 0;
   width: 0;
 }
-nav.sub::-webkit-scrollbar-track-piece {
+.navbar nav::-webkit-scrollbar-track-piece {
   background: transparent;
 }
-nav.sub::-webkit-scrollbar-thumb {
+.navbar nav::-webkit-scrollbar-thumb {
   background: var(--text-meta);
   cursor: pointer;
   border-radius: 0;
 }
-nav.sub::-webkit-scrollbar-thumb:hover {
+.navbar nav::-webkit-scrollbar-thumb:hover {
   background: var(--text-p3);
 }
-nav.sub >p {
+.navbar nav >p {
   margin: 0;
 }
-nav.sub a {
+.navbar nav a {
   padding: 2px 0.75rem;
   margin: 10px 0.25rem 8px 0.25rem;
   line-height: 2;
@@ -1459,7 +1473,7 @@ nav.sub a {
   position: relative;
   z-index: 1;
 }
-nav.sub a:after {
+.navbar nav a:after {
   height: 2px;
   position: absolute;
   bottom: -8px;
@@ -1469,33 +1483,35 @@ nav.sub a:after {
   border-radius: 2px;
   pointer-events: none;
 }
-nav.sub a:hover {
+.navbar nav a:hover {
   background: var(--block-hover);
 }
-nav.sub a.active,
-nav.sub a:hover {
+.navbar nav a.active,
+.navbar nav a:hover {
   color: var(--text-p1);
 }
-nav.sub a.active {
+.navbar nav a.active {
   background: var(--card);
   box-shadow: 0 0 2px 0px rgba(0,0,0,0.04), 0 0 8px 0px rgba(0,0,0,0.04);
+  cursor: default;
+  pointer-events: none;
 }
-nav.sub a.active:after {
+.navbar nav a.active:after {
   content: '';
 }
-nav.sub a+a {
+.navbar nav a+a {
   margin-left: 4px;
 }
 @media screen and (max-width: 667px) {
-  .nav-wrap {
+  .navbar.top {
     margin-top: 0;
     padding-left: 0;
     padding-right: 0;
   }
-  .nav-wrap nav a:first-child {
+  .navbar.top nav a:first-child {
     margin-left: 1rem;
   }
-  .nav-wrap nav a:last-child {
+  .navbar.top nav a:last-child {
     margin-right: 1rem;
   }
 }
@@ -1648,7 +1664,7 @@ article.md-text.content+.related-wrap {
   margin: 0;
   line-height: 1.2;
   color: var(--text-p1);
-  font-size: calc(17px + 4px);
+  font-size: calc(17px + 2px);
 }
 .related-wrap#read-next .body a:hover {
   color: #ff5724 !important;
@@ -1791,28 +1807,39 @@ article.md-text.content+.related-wrap {
   line-height: 1;
   margin: 1rem;
 }
-.banner .content .top .navbar {
+.banner .content .top .tag-plugin.navbar {
   margin: 0;
-}
-.banner .content .top .navbar nav.cap {
   border-radius: 6px;
+  padding: 2px;
   background: rgba(0,0,0,0.2);
+  overflow: hidden;
 }
-.banner .content .top .navbar .link {
+.banner .content .top .tag-plugin.navbar:after {
+  content: none;
+}
+.banner .content .top .tag-plugin.navbar .link {
+  margin: 0;
+  border-radius: 4px;
   color: rgba(255,255,255,0.8);
   padding: 2px 6px;
-  border-radius: 4px;
   background: none;
   line-height: 1.5;
   font-size: 0.9375rem;
+  text-shadow: 0 0 1px rgba(0,0,0,0.12);
 }
-.banner .content .top .navbar .link.active {
+.banner .content .top .tag-plugin.navbar .link+.link {
+  margin-left: 2px;
+}
+.banner .content .top .tag-plugin.navbar .link:after {
+  content: none;
+}
+.banner .content .top .tag-plugin.navbar .link:hover {
   color: #fff;
   background: rgba(255,255,255,0.25);
 }
-.banner .content .top .navbar .link:hover {
+.banner .content .top .tag-plugin.navbar .link.active {
   color: #fff;
-  background: rgba(0,0,0,0.5) !important;
+  background: rgba(255,255,255,0.25);
 }
 .banner .content .top .back {
   background: none;
@@ -3099,33 +3126,17 @@ details.folding[child=iframe] >div.body {
   height: 100%;
   margin: 0;
 }
-.md-text .tag-plugin.navbar {
-  text-align: center;
+.tag-plugin.navbar {
+  padding: 0;
 }
-.md-text .tag-plugin.navbar nav.cap {
-  margin: 0;
-  padding: 1px;
-  background: var(--card);
-  box-shadow: 0 0 2px 0px rgba(0,0,0,0.04), 0 0 8px 0px rgba(0,0,0,0.04);
-  border-radius: 6px;
-  display: inline-flex;
-  max-width: 100%;
+.tag-plugin.navbar:after {
+  left: 0;
+  right: 0;
 }
-.md-text .tag-plugin.navbar nav.cap a {
-  margin: 1px;
-  padding: 0.25em 0.75rem;
-  color: var(--text-p2);
-}
-.md-text .tag-plugin.navbar nav.cap a:after {
-  display: none;
-}
-.md-text .tag-plugin.navbar nav.cap a:hover {
-  background: var(--block);
-}
-.md-text .tag-plugin.navbar nav.cap a.active {
-  background: var(--block);
-  box-shadow: none;
-  color: var(--text-p1);
+@media screen and (min-width: 667px) {
+  .tag-plugin.navbar nav a {
+    margin-top: 2px;
+  }
 }
 .md-text .tag-plugin.note {
   position: relative;
@@ -3408,6 +3419,7 @@ details.folding[child=iframe] >div.body {
   display: flex;
   flex-direction: column;
   --gap-p: 2rem;
+  margin: var(--gap-p) 1rem;
 }
 .md-text .tag-plugin.quot .content {
   display: flex;
@@ -3426,7 +3438,6 @@ details.folding[child=iframe] >div.body {
   }
 }
 .md-text .tag-plugin.quot .content {
-  max-width: 500px;
   position: relative;
 }
 .md-text.content .tag-plugin.quot h1,
@@ -3476,18 +3487,20 @@ details.folding[child=iframe] >div.body {
   height: 20px;
   border-width: 8px;
 }
-.md-text .tag-plugin.quot .content[type=icon] .icon {
+.md-text .tag-plugin.quot .content[type=icon] img,
+.md-text .tag-plugin.quot .content[type=icon] svg {
   height: 1.5em;
   display: inline-block;
   color: #ff5724;
   border-radius: 0;
+  flex-shrink: 0;
 }
-.md-text .tag-plugin.quot .content[type=icon] .icon.prefix {
-  margin-left: -0.5rem;
-  margin-right: 0.5rem;
+.md-text .tag-plugin.quot .content[type=icon] span.text {
+  margin: 0 0.5rem;
+  padding-top: 1px;
 }
-.md-text .tag-plugin.quot .content[type=icon] .icon.suffix {
-  margin-left: 0.5rem;
+.md-text .tag-plugin.quot .content[type=icon] span.empty {
+  padding: 0 8px;
 }
 .sites-wrap .grid-box {
   display: grid;
@@ -4269,11 +4282,11 @@ details.toc[open] >div.body section .header+.doc_tree {
   height: 40px;
 }
 .search-wrapper .search-button svg {
-  width: 44px;
+  height: 1rem;
+  width: 40px;
   margin-left: 4px;
   color: var(--text-p2);
-  font-size: 16px;
-  margin-top: 1px;
+  fill: currentColor;
 }
 .search-wrapper .search-button svg path[p-id="1562"] {
   color: #1cd0fd;
@@ -5116,7 +5129,7 @@ details.toc[open] >div.body section .header+.doc_tree {
   align-items: center;
   justify-content: space-between;
   font-weight: 500;
-  font-size: 0.875rem;
+  font-size: calc(17px - 2px);
 }
 .post-list #cats a.cat.child {
   padding-left: 2rem;
@@ -5284,7 +5297,7 @@ details.toc[open] >div.body section .header+.doc_tree {
   font-weight: 500;
   margin: 1.25rem 0 0.75rem 0;
   line-height: 1.2;
-  font-size: calc(17px + 7px);
+  font-size: calc(17px + 4px);
   border-bottom: none;
   color: var(--text);
   transition: color 0.2s ease-out;
@@ -5294,7 +5307,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 }
 @media screen and (max-width: 500px) {
   .l_main .post-list .post-title {
-    font-size: calc(17px + 4px);
+    font-size: calc(17px + 2px);
     margin: 0.5rem 0;
   }
 }
