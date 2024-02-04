@@ -19,7 +19,6 @@
 @media screen and (min-width: 2560px) {
   :root {
     --width-main: 860px;
-    --gap-l: 64px;
   }
 }
 @media screen and (max-width: 768px) {
@@ -365,7 +364,7 @@ a.button.start.gradient {
 code {
   -webkit-font-smoothing: auto;
   -moz-osx-font-smoothing: auto;
-  font-family: Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
+  font-family: "LXGW WenKai Screen", Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
 }
 p>code:not([class]),
 li>code:not([class]) {
@@ -766,7 +765,7 @@ input {
 }
 input.copy-area {
   display: block;
-  font-family: Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
+  font-family: "LXGW WenKai Screen", Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
   font-size: 0.8125rem;
   font-weight: 700;
   color: var(--text-p3);
@@ -1556,7 +1555,7 @@ div.toast.show {
   background-image: url("https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/arrow/f049bbd4e88ec.svg");
 }
 .paginator-wrap .current {
-  font-family: Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
+  font-family: "LXGW WenKai Screen", Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
   background: var(--block);
 }
 .paginator-wrap .extend {
@@ -2413,7 +2412,7 @@ a.tag-plugin.button:hover {
   background: var(--block);
   border-right: 1px solid var(--block-border);
   color: var(--text-p3);
-  font-family: Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
+  font-family: "LXGW WenKai Screen", Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
   font-size: 0.8125rem;
   font-weight: 700;
   flex-shrink: 0;
@@ -2908,15 +2907,24 @@ details.folding[child=iframe] >div.body {
 }
 .tag-plugin.grid[bg='card']>.cell {
   background: var(--card);
-  box-shadow: 0 1px 2px 0px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-  -moz-transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-  -webkit-transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-  -o-transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
 }
-.tag-plugin.grid[bg='card']>.cell:hover {
-  box-shadow: 0 12px 20px -4px rgba(0,0,0,0.15);
-  transform: translate3d(0, -2px, 0);
+@media (prefers-color-scheme: dark) {
+  .tag-plugin.grid[bg='card']>.cell:hover {
+    box-shadow: 0 0 4px -2px #1cd0fd, 0 0 24px -8px #1cd0fd;
+  }
+}
+@media (prefers-color-scheme: light) {
+  .tag-plugin.grid[bg='card']>.cell {
+    box-shadow: 0 1px 2px 0px rgba(0,0,0,0.1);
+  }
+  .tag-plugin.grid[bg='card']>.cell:hover {
+    box-shadow: 0 12px 20px -4px rgba(0,0,0,0.15);
+    transform: translate3d(0, -2px, 0);
+  }
 }
 .md-text .tag-plugin.hashtag {
   padding: 0px 8px;
@@ -3030,7 +3038,7 @@ span.tag-plugin.icon img {
   border-bottom-width: 2px;
   background: var(--card);
   padding: 2px 4px 1px 4px;
-  font-family: Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
+  font-family: "LXGW WenKai Screen", Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
   font-weight: 700;
 }
 .md-text psw {
@@ -3052,7 +3060,7 @@ span.tag-plugin.icon img {
   color: var(--theme);
   line-height: 1;
   font-weight: 700;
-  font-family: Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
+  font-family: "LXGW WenKai Screen", Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
 }
 .md-text h1 sup,
 .md-text h2 sup,
@@ -3077,16 +3085,25 @@ span.tag-plugin.icon img {
   cursor: pointer;
   width: 300px;
   max-width: 100%;
-  box-shadow: 0 1px 2px 0px rgba(0,0,0,0.1);
   border-radius: 12px;
-  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-  -moz-transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-  -webkit-transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-  -o-transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
 }
-.md-text .link-card:hover {
-  box-shadow: 0 12px 20px -4px rgba(0,0,0,0.15);
-  transform: translate3d(0, -2px, 0);
+@media (prefers-color-scheme: dark) {
+  .md-text .link-card:hover {
+    box-shadow: 0 0 4px -2px #1cd0fd, 0 0 24px -8px #1cd0fd;
+  }
+}
+@media (prefers-color-scheme: light) {
+  .md-text .link-card {
+    box-shadow: 0 1px 2px 0px rgba(0,0,0,0.1);
+  }
+  .md-text .link-card:hover {
+    box-shadow: 0 12px 20px -4px rgba(0,0,0,0.15);
+    transform: translate3d(0, -2px, 0);
+  }
 }
 .md-text .link-card.plain {
   flex-direction: row;
@@ -5166,7 +5183,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 }
 .post-list #archive .archive-header {
   display: inline-block;
-  font-family: Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
+  font-family: "LXGW WenKai Screen", Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 0.5em;
@@ -5197,7 +5214,7 @@ details.toc[open] >div.body section .header+.doc_tree {
   border-bottom: 1px dashed var(--text-meta);
 }
 .post-list #archive a.post time {
-  font-family: Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
+  font-family: "LXGW WenKai Screen", Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
   margin-right: 1em;
   font-weight: 700;
   flex-shrink: 0;
@@ -5238,7 +5255,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 }
 .post-list #cats a.cat .badge {
   font-weight: 700;
-  font-family: Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
+  font-family: "LXGW WenKai Screen", Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
   opacity: 0.5;
   font-size: 0.75rem;
 }
@@ -5315,10 +5332,10 @@ details.toc[open] >div.body section .header+.doc_tree {
   }
 }
 .l_body {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr minmax(200px, var(--width-main)) 1fr;
   margin: auto;
   padding: 0 var(--gap-l);
-  justify-content: center;
   font-size: var(--fsp);
 }
 .l_body .l_left {
@@ -5329,33 +5346,13 @@ details.toc[open] >div.body section .header+.doc_tree {
   position: -webkit-sticky;
   top: 8px;
 }
-.l_body .l_main {
-  flex-shrink: 1;
-  flex-grow: 1;
-  width: 320px;
-  max-width: var(--width-main);
-}
-.main-mask {
-  position: fixed;
-  pointer-events: none;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.2);
-  z-index: 9;
-  opacity: 0;
-  transition: opacity 0.2s ease-out;
-  -moz-transition: opacity 0.2s ease-out;
-  -webkit-transition: opacity 0.2s ease-out;
-  -o-transition: opacity 0.2s ease-out;
-}
 @media screen and (max-width: 667px) {
   .mobile-only {
     display: block !important;
   }
   .l_body {
     padding: 0;
+    grid-template-columns: 1fr;
   }
   .l_body .l_left {
     position: fixed;
@@ -5378,6 +5375,21 @@ details.toc[open] >div.body section .header+.doc_tree {
     opacity: 1;
     pointer-events: inherit;
   }
+}
+.main-mask {
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.2);
+  z-index: 9;
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+  -moz-transition: opacity 0.2s ease-out;
+  -webkit-transition: opacity 0.2s ease-out;
+  -o-transition: opacity 0.2s ease-out;
 }
 .l_main .post-list {
   margin: 1rem;
@@ -5427,10 +5439,6 @@ details.toc[open] >div.body section .header+.doc_tree {
 @media (prefers-color-scheme: light) {
   .post-list .post-card {
     box-shadow: 0 1px 2px 0px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-    -moz-transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-    -webkit-transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-    -o-transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
   }
   .post-list .post-card:hover {
     box-shadow: 0 12px 20px -4px rgba(0,0,0,0.15);
@@ -5634,12 +5642,6 @@ details.toc[open] >div.body section .header+.doc_tree {
 .l_main {
   position: relative;
   padding-bottom: calc(1 * var(--gap-l));
-}
-@media screen and (min-width: 1400px) {
-  .l_main {
-    margin-left: calc(2 * var(--gap-l));
-    margin-right: calc(2 * var(--gap-l) + var(--width-left) / 2);
-  }
 }
 @media screen and (min-width: 667px) {
   .l_main {
