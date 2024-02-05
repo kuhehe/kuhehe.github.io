@@ -1,4 +1,3 @@
-console.log('\n' + '%c Stellar v' + stellar.version + ' %c\n' + stellar.github + '\n', 'color:#e8fafe;background:#03c7fa;padding:8px;border-radius:4px', 'margin-top:8px');
 // utils
 const util = {
 
@@ -55,6 +54,10 @@ const util = {
       el.classList.toggle("display");
     }
   },
+
+  scrollTop: () => {
+    window.scrollTo({top: 0, behavior: "smooth"});
+  },
 }
 
 const hud = {
@@ -77,11 +80,26 @@ const hud = {
 const l_body = document.querySelector('.l_body');
 
 const sidebar = {
-  toggle: () => {
+  leftbar: () => {
     if (l_body) {
-      l_body.classList.add('mobile');
-      l_body.classList.toggle("sidebar");
+      l_body.toggleAttribute('leftbar');
+      l_body.removeAttribute('rightbar');
     }
+  },
+  rightbar: () => {
+    if (l_body) {
+      l_body.toggleAttribute('rightbar');
+      l_body.removeAttribute('leftbar');
+    }
+  },
+  dismiss: () => {
+    if (l_body) {
+      l_body.removeAttribute('leftbar');
+      l_body.removeAttribute('rightbar');
+    }
+  },
+  toggleTOC: () => {
+    document.querySelector('#data-toc').classList.toggle('collapse');
   }
 }
 
@@ -91,58 +109,64 @@ const init = {
       const scrollOffset = 32;
       var segs = [];
       $("article.md-text :header").each(function (idx, node) {
-        segs.push(node)
+        segs.push(node);
       });
-      // 定位到激活的目录树（不如pjax体验好）
-      // const widgets = document.querySelector('.widgets')
-      // const e1 = document.querySelector('.doc-tree-link.active')
-      // const offsetTop = e1.getBoundingClientRect().top - widgets.getBoundingClientRect().top - 100
-      // if (offsetTop > 0) {
-      //   widgets.scrollBy({top: offsetTop, behavior: 'smooth'})
-      // }
-      // 滚动
-      $(document, window).scroll(function (e) {
+      function activeTOC() {
         var scrollTop = $(this).scrollTop();
-        var topSeg = null
+        var topSeg = null;
         for (var idx in segs) {
-          var seg = $(segs[idx])
+          var seg = $(segs[idx]);
           if (seg.offset().top > scrollTop + scrollOffset) {
-            continue
+            continue;
           }
           if (!topSeg) {
-            topSeg = seg
+            topSeg = seg;
           } else if (seg.offset().top >= topSeg.offset().top) {
-            topSeg = seg
+            topSeg = seg;
           }
         }
         if (topSeg) {
-          $("#data-toc a.toc-link").removeClass("active")
-          var link = "#" + topSeg.attr("id")
+          $("#data-toc a.toc-link").removeClass("active");
+          var link = "#" + topSeg.attr("id");
           if (link != '#undefined') {
-            const highlightItem = $('#data-toc a.toc-link[href="' + encodeURI(link) + '"]')
+            const highlightItem = $('#data-toc a.toc-link[href="' + encodeURI(link) + '"]');
             if (highlightItem.length > 0) {
-              highlightItem.addClass("active")
-              const e0 = document.querySelector('.widgets')
-              const e1 = document.querySelector('#data-toc a.toc-link[href="' + encodeURI(link) + '"]')
-              const offsetBottom = e1.getBoundingClientRect().bottom - e0.getBoundingClientRect().bottom + 200
-              const offsetTop = e1.getBoundingClientRect().top - e0.getBoundingClientRect().top - 64
-              if (offsetTop < 0) {
-                e0.scrollBy(0, offsetTop)
-              } else if (offsetBottom > 0) {
-                e0.scrollBy(0, offsetBottom)
-              }
+              highlightItem.addClass("active");
             }
           } else {
-            $('#data-toc a.toc-link:first').addClass("active")
+            $('#data-toc a.toc-link:first').addClass("active");
           }
         }
-      })
+      }
+      function scrollTOC() {
+        const e0 = document.querySelector('#data-toc .toc');
+        const e1 = document.querySelector('#data-toc .toc a.toc-link.active');
+        if (e0 == null || e1 == null) {
+          return;
+        }
+        const offsetBottom = e1.getBoundingClientRect().bottom - e0.getBoundingClientRect().bottom + 100;
+        const offsetTop = e1.getBoundingClientRect().top - e0.getBoundingClientRect().top - 64;
+        if (offsetTop < 0) {
+          e0.scrollBy({top: offsetTop, behavior: "smooth"});
+        } else if (offsetBottom > 0) {
+          e0.scrollBy({top: offsetBottom, behavior: "smooth"});
+        }
+      }
+      
+      var timeout = null;
+      window.addEventListener('scroll', function() {
+        activeTOC();
+        if(timeout !== null) clearTimeout(timeout);
+        timeout = setTimeout(function() {
+          scrollTOC();
+        }.bind(this), 300);
+      });      
     })
   },
-  sidebar: () => {
+  leftbar: () => {
     stellar.jQuery(() => {
       $("#data-toc a.toc-link").click(function (e) {
-        l_body.classList.remove("sidebar");
+        l_body.classList.remove("leftbar");
       });
     })
   },
@@ -190,7 +214,7 @@ const init = {
 
 // init
 init.toc()
-init.sidebar()
+init.leftbar()
 init.relativeDate(document.querySelectorAll('#post-meta time'))
 init.registerTabsTag()
 
