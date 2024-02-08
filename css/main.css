@@ -25,6 +25,11 @@
     --side-content-width: 188px;
   }
 }
+@media screen and (max-width: 667px) {
+  :root {
+    --side-content-width: 224px;
+  }
+}
 :root {
   --gap-max: calc(var(--gap-margin) + var(--gap-padding));
 }
@@ -1389,16 +1394,19 @@ div.toast.show {
 }
 .page-footer a {
   color: var(--text-p2);
+  border-radius: 2px;
 }
 .page-footer a:hover {
-  color: #ff5724;
+  color: var(--text);
+  background: var(--block-hover);
 }
 .page-footer .sitemap {
-  margin: 0.5rem 0 2rem;
+  margin: 0.5rem -4px 2rem;
   display: grid;
   scrollbar-width: none;
   grid-gap: 1rem 1rem;
   grid-auto-flow: column dense;
+  grid-template-columns: repeat(4, 1fr);
   overflow: scroll;
 }
 .page-footer .sitemap::-webkit-scrollbar {
@@ -1427,21 +1435,18 @@ div.toast.show {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding: 4px;
 }
 .page-footer .sitemap .sitemap-group >span {
-  margin: 0.5rem 0;
   font-weight: 500;
   color: var(--text-p1);
-}
-.page-footer .sitemap .sitemap-group >a {
-  margin: 0.2rem 0;
+  margin: 4px 0;
 }
 .page-footer .text p {
   margin: 4px 0;
   line-height: 1.5;
 }
 .page-footer .text a:not([class]) {
-  text-decoration: underline;
   font-weight: 500;
 }
 .navbar {
@@ -4943,14 +4948,8 @@ details.toc[open] >div.body section .header+.doc_tree {
   -moz-transition: all 0.2s ease-out;
   -webkit-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
-  border-bottom: 1px solid var(--text);
   word-break: break-all;
-  color: var(--text-p1);
   --fsp: calc(17px - 2px);
-}
-.widget-wrapper.timeline .body a:hover {
-  color: #ff5724;
-  border-bottom: 1px solid #ff5724;
 }
 .widget-wrapper.timeline .tag-plugin.timeline .timenode .header {
   margin: 0.5rem var(--gap-padding);
@@ -5518,6 +5517,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 .l_body .l_right {
   justify-self: left;
   --gap-margin: 0px;
+  max-height: calc(100% - 8px * 2);
 }
 .l_body .l_right .widgets {
   height: 100%;
@@ -5533,7 +5533,7 @@ details.toc[open] >div.body section .header+.doc_tree {
   .l_body .l_right {
     top: 8px;
     position: fixed;
-    height: calc(100% - 8px * 2);
+    max-height: calc(100% - 8px * 2);
     transform: translateX(320px);
     transition: transform 0.38s ease-out;
     margin: 0;
@@ -5542,7 +5542,8 @@ details.toc[open] >div.body section .header+.doc_tree {
     z-index: 10;
     background: var(--site-bg);
     overflow: auto;
-    --blur-bg: var(--alpha75);
+    --blur-bg: var(--alpha60);
+    --blur-px: 50px;
   }
   .l_body .l_right::-webkit-scrollbar {
     height: 0;
@@ -5617,7 +5618,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 }
 .l_main .post-list .post-title {
   font-weight: 500;
-  margin: 1.25rem 0 0.75rem 0;
+  margin: 1.25rem auto 0.75rem 0;
   line-height: 1.2;
   font-size: calc(17px + 4px);
   border-bottom: none;
@@ -6080,9 +6081,9 @@ body>.sitebg .siteblur:hover {
   margin: auto;
   display: block;
 }
-.md-text li:not([class]) a:not([class]),
-.md-text p:not([class]) a:not([class]),
-.md-text table a:not([class]) {
+li:not([class]) a:not([class]),
+p:not([class]) a:not([class]),
+table a:not([class]) {
   position: relative;
   text-decoration: none;
   transition: all 0.2s ease-out;
@@ -6094,23 +6095,23 @@ body>.sitebg .siteblur:hover {
   color: inherit;
   background: linear-gradient(0deg, var(--theme-link), var(--theme-link)) no-repeat left 100%/100% 1px;
 }
-.md-text li:not([class]) a:not([class]):hover,
-.md-text p:not([class]) a:not([class]):hover,
-.md-text table a:not([class]):hover {
+li:not([class]) a:not([class]):hover,
+p:not([class]) a:not([class]):hover,
+table a:not([class]):hover {
   text-decoration: none;
   color: var(--theme-link);
   border-radius: 4px;
   background: linear-gradient(0deg, var(--theme-link-opa), var(--theme-link-opa)) no-repeat left 100%/100% 100%;
 }
-.md-text li:not([class]) a:not([class]):has(img),
-.md-text p:not([class]) a:not([class]):has(img),
-.md-text table a:not([class]):has(img) {
+li:not([class]) a:not([class]):has(img),
+p:not([class]) a:not([class]):has(img),
+table a:not([class]):has(img) {
   background: none;
   padding: 0;
 }
-.md-text li:not([class]) a:not([class]):has(img):hover,
-.md-text p:not([class]) a:not([class]):has(img):hover,
-.md-text table a:not([class]):has(img):hover {
+li:not([class]) a:not([class]):has(img):hover,
+p:not([class]) a:not([class]):has(img):hover,
+table a:not([class]):has(img):hover {
   background: none;
 }
 .md-text .aplayer {
