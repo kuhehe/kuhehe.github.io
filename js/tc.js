@@ -1,0 +1,1 @@
+document.writeln("<div id=\"leftDiv1\" ><a href='https://simhaoka.com/phone/template1?gid=329462&id=BEB2EC5A50CFC026883BD3CB2645EC14' target=_blank><img src='https://static.91haoka.cn/1707143590OB1489456.jpg' border=0></a><div class='divclose1'><span onclick=\"$('#leftDiv1').remove()\">点击关闭X</span></div></div>");
