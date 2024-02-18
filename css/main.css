@@ -96,7 +96,7 @@
   }
 }
 pre {
-  font-family: Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
+  font-family: "LXGW WenKai Screen", Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
   font-size: 0.8125rem;
   tab-size: 4;
   -moz-tab-size: 4;
@@ -419,7 +419,7 @@ pre:not([class]):has(>code) {
   overflow: hidden;
   background: var(--block);
   line-height: 1.5;
-  font-family: Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
+  font-family: "LXGW WenKai Screen", Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
   box-sizing: border-box;
 }
 @media screen and (min-width: 500px) {
@@ -782,7 +782,6 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   scroll-padding-top: 8px;
-  scroll-behavior: smooth;
 }
 body {
   background: var(--site-bg);
@@ -1454,10 +1453,8 @@ div.toast.show {
   z-index: 8;
   top: 0;
   background: var(--site-bg);
-  position: sticky;
-  position: -webkit-sticky;
-  margin-bottom: 1px;
-  margin-top: -8px;
+  position: inherit;
+  background: none;
 }
 .navbar:after {
   content: '';
@@ -1494,7 +1491,7 @@ div.toast.show {
 }
 .navbar nav a {
   padding: 2px 0.75rem;
-  margin: 10px 0.25rem 8px 0.25rem;
+  margin: 10px 0.25rem 8px 0;
   line-height: 2;
   color: var(--text-p3);
   border-radius: 4px;
@@ -3830,22 +3827,6 @@ p>strong>span.tag-plugin.icon {
   max-width: 100%;
   text-align: justify;
   margin-top: 0.5rem;
-  overflow: scroll;
-}
-.tag-plugin.tabs .tab-content::-webkit-scrollbar {
-  height: 0;
-  width: 0;
-}
-.tag-plugin.tabs .tab-content::-webkit-scrollbar-track-piece {
-  background: transparent;
-}
-.tag-plugin.tabs .tab-content::-webkit-scrollbar-thumb {
-  background: var(--text-meta);
-  cursor: pointer;
-  border-radius: 0;
-}
-.tag-plugin.tabs .tab-content::-webkit-scrollbar-thumb:hover {
-  background: var(--text-p3);
 }
 .tag-plugin.tabs .tab-content .tab-pane:not(.active) {
   display: none;
@@ -4132,21 +4113,21 @@ p>strong>span.tag-plugin.icon {
   margin: 0.5rem 0;
   line-height: 1.2;
 }
-.tag-plugin.timeline.stellar-memos-api .body p:first-child {
+.tag-plugin.timeline.ds-memos .body p:first-child {
   margin-top: 2px;
 }
-.tag-plugin.timeline.stellar-memos-api .body p:last-child {
+.tag-plugin.timeline.ds-memos .body p:last-child {
   margin-bottom: 2px;
 }
-.tag-plugin.timeline.stellar-memos-api .body img {
+.tag-plugin.timeline.ds-memos .body img {
   margin: 0.5rem 0;
   max-height: 128px;
   cursor: zoom-in;
 }
-.tag-plugin.timeline.stellar-memos-api .body .tag-plugin.image {
+.tag-plugin.timeline.ds-memos .body .tag-plugin.image {
   display: flex;
 }
-.tag-plugin.timeline.stellar-memos-api .body .tag-plugin.image .image-bg+.image-bg {
+.tag-plugin.timeline.ds-memos .body .tag-plugin.image .image-bg+.image-bg {
   margin-left: 4px;
 }
 details.toc {
@@ -5891,6 +5872,7 @@ body>.sitebg {
   right: 0;
   bottom: 0;
   background-size: cover;
+  background-image: url("https://bu.dusays.com/2024/01/29/65b77afd21683.jpg");
 }
 body>.sitebg .siteblur {
   width: 100%;

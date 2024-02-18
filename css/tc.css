@@ -1,10 +1,10 @@
 #leftDiv1{
 	width:126px;
-	top:80px;
+	top:300px;
 	float:right;
 	position:fixed;
 	z-index:10000000;
-	left:5px;
+	left:2px;
 	_position:absolute;
 	}
 .divclose1,.divclose2{

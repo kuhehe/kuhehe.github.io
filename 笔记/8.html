@@ -49,7 +49,7 @@
 
   <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" media="all" /><script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script><script type="text/javascript" src="/js/ClickShowText.js"></script><script src="/js/tc.js"></script><link rel="stylesheet" href="/css/tc.css">
 </head>
-<body>
+<body><div class="sitebg"><div class="siteblur"></div></div>
 
 
 
@@ -107,10 +107,6 @@
 <p>本站已稳定运行 <uptime></uptime> </p>
 <div class="newYear"></div>
 
-<script>
-swal('酷小呵博客','公告弹窗</p>代码演示\n\n','success');
-</script>
-
 <!--不蒜子计数器-->
 <script defer src="https://busuanzi.9420.ltd/js"></script>
 <!--添加一个访问量-->
@@ -118,15 +114,17 @@ swal('酷小呵博客','公告弹窗</p>代码演示\n\n','success');
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
 <div class="widgets">
-
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9F%B3%E4%B9%90%E8%BD%AF%E4%BB%B6"><span class="toc-text">音乐软件</span></a></li></ol></div><div class="widget-footer">
-
-<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+<widget class="widget-wrapper user-card author"><div class="widget-body"><div class="avatar"><img class="lazy" type="img" id="avatar_url" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://bu.dusays.com/2024/02/06/65c1ce484c3da.jpg"></div><p class="username" ff="title" type="text" id="name">酷小呵</p><p class="bio" type="text" id="bio">公众号：酷小呵</p><a class="follow" href="/author/%E9%85%B7%E5%B0%8F%E5%91%B5/"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg>所有文章</a></div></widget>
 
 <widget class="widget-wrapper linklist"><div class="widget-body fs14">
 <div class="linklist left" style="grid-template-columns:repeat(1,1fr);">
 <a class="link" title="失效反馈" target="_blank" rel="noopener external nofollow noreferrer" href="https://flowus.cn/form/c3e42855-dc21-49c9-9292-09606f2984ff?code=14QS4G"><div class="flex"><svg t="1707471077217" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="34410" width="200" height="200"><path d="M320 405.333333m128 0l298.666667 0q128 0 128 128l0 234.666667q0 128-128 128l-298.666667 0q-128 0-128-128l0-234.666667q0-128 128-128Z" fill="#FF4D4F" opacity=".1" p-id="34411"></path><path d="M480 128a32 32 0 0 1 0 64H277.333333l-3.754666 0.106667A64 64 0 0 0 213.333333 256v512l0.106667 3.754667A64 64 0 0 0 277.333333 832h469.333334l3.754666-0.106667A64 64 0 0 0 810.666667 768V416a32 32 0 0 1 64 0V768a128 128 0 0 1-128 128H277.333333a128 128 0 0 1-128-128V256a128 128 0 0 1 128-128z m106.666667 533.333333a32 32 0 0 1 0 64h-234.666667a32 32 0 0 1 0-64h234.666667z m-128-149.333333a32 32 0 0 1 0 64h-106.666667a32 32 0 0 1 0-64h106.666667zM676.586667 192.597333l105.6 59.968-121.941334 207.701334-68.501333 28.8a20.437333 20.437333 0 0 1-26.666667-10.538667 19.733333 19.733333 0 0 1-1.493333-5.461333L554.666667 400.32l121.92-207.722667zM780.16 136.042667a59.434667 59.434667 0 0 1 22.314667 81.92l-10.176 17.28-105.578667-59.946667 10.154667-17.301333C713.749333 129.28 751.018667 119.466667 780.181333 136.042667z" fill="#FF4D4F" p-id="34412"></path></svg><span>失效反馈</span></div></a>
 <a class="link" title="我要投稿" target="_blank" rel="noopener external nofollow noreferrer" href="https://flowus.cn/form/1c671ca6-6893-47e8-808c-11217f4a318b?code=14QS4G"><div class="flex"><svg t="1707470076247" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="18302" width="200" height="200"><path d="M853.333333 56.888889c62.767407 0 113.777778 51.067259 113.777778 113.777778v682.666666c0 62.767407-51.01037 113.777778-113.777778 113.777778H170.666667c-62.710519 0-113.777778-51.01037-113.777778-113.777778V170.666667c0-62.710519 51.067259-113.777778 113.777778-113.777778zM544.180148 388.79763a45.454222 45.454222 0 0 0-64.360296 0l-12.325926 12.344889-34.417778 34.417777-15.739259 15.73926-24.082963 24.082963-8.89363 8.874666-16.440889 16.459852-7.585185 7.585185-7.149037 7.130074-18.830222 18.830223-2.74963 2.768592-5.195852 5.195852-11.093333 11.093333-3.678815 3.678815-1.687703 1.668741-7.774815 7.793778-4.171852 4.171851-0.227556 0.208593a45.454222 45.454222 0 0 0 0 64.360296 45.454222 45.454222 0 0 0 64.360297 0l104.353185-104.353185V785.066667a45.511111 45.511111 0 1 0 91.022222 0V530.849185l104.353185 104.353185a45.37837 45.37837 0 0 0 32.180148 13.330963 45.454222 45.454222 0 0 0 32.180149-77.691259l-52.110223-52.110222-10.391703-10.391704c-3.413333-3.375407-6.712889-6.693926-9.955556-9.955555l-35.498667-35.498667-7.793777-7.774815-7.35763-7.376592-3.527111-3.508149-6.712889-6.712889-12.136296-12.136296-7.945482-7.945481-2.427259-2.42726-6.656-6.656-2.010074-2.010074-5.347556-5.347555-7.793777-7.793778-2.42726-2.446222-1.953185-1.953185z" fill="#2B87FF" p-id="18303"></path><path d="M280.272593 280.272593a46.364444 46.364444 0 0 1 46.345481-46.345482h370.763852a46.326519 46.326519 0 1 1 0 92.690963H326.618074a46.364444 46.364444 0 0 1-46.326518-46.345481z" fill="#F0F0F0" p-id="18304"></path></svg><span>我要投稿</span></div></a></div></div></widget>
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9F%B3%E4%B9%90%E8%BD%AF%E4%BB%B6"><span class="toc-text">音乐软件</span></a></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
 </div></aside><div class='float-panel blur'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
@@ -360,21 +358,11 @@ swal('酷小呵博客','公告弹窗</p>代码演示\n\n','success');
 
 
 
-<script>
-  ctx.services = {
-    fcircle: `/js/services/fcircle.js`,
-    friends: `/js/services/friends.js`,
-    ghinfo: `/js/services/ghinfo.js`,
-    siteinfo: `/js/services/siteinfo.js`,
-    mdrender: `/js/services/mdrender.js`,
-    memos: `/js/services/memos.js`,
-    sites: `/js/services/sites.js`,
-    timeline: `/js/services/timeline.js`,
-    weibo: `/js/services/weibo.js`,
-  }
+<script defer>
   window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
     for (let id of Object.keys(ctx.services)) {
-      const js = ctx.services[id];
+      const js = ctx.services[id].js;
       if (id == 'siteinfo') {
         ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
         if (ctx.cardlinks?.length > 0) {
@@ -383,7 +371,7 @@ swal('酷小呵博客','公告弹窗</p>代码演示\n\n','success');
           });
         }
       } else {
-        const els = document.getElementsByClassName(`stellar-${id}-api`);
+        const els = document.getElementsByClassName(`ds-${id}`);
         if (els?.length > 0) {
           utils.jq(() => {
             if (id == 'timeline' || 'memos' || 'marked') {
@@ -437,7 +425,7 @@ swal('酷小呵博客','公告弹窗</p>代码演示\n\n','success');
   });
 </script><script>
   ctx.fancybox = {
-    selector: ``,
+    selector: `.timenode p>img`,
     css: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css`,
     js: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js`
   };
@@ -447,7 +435,7 @@ swal('酷小呵博客','公告弹窗</p>代码演示\n\n','success');
   }
   var needFancybox = document.querySelectorAll(selector).length !== 0;
   if (!needFancybox) {
-    const els = document.getElementsByClassName('stellar-memos-api');
+    const els = document.getElementsByClassName('ds-memos');
     if (els != undefined && els.length > 0) {
       needFancybox = true;
     }
@@ -470,8 +458,8 @@ swal('酷小呵博客','公告弹窗</p>代码演示\n\n','success');
   window.addEventListener('DOMContentLoaded', (event) => {
     const swiper_api = document.getElementById('swiper-api');
     if (swiper_api != undefined) {
-      utils.css(`https://unpkg.com/swiper@10.3/swiper-bundle.min.css`);
-      utils.js(`https://unpkg.com/swiper@10.3/swiper-bundle.min.js`, { defer: true }).then(function () {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
         const effect = swiper_api.getAttribute('effect') || '';
         var swiper = new Swiper('.swiper#swiper-api', {
           slidesPerView: 'auto',
