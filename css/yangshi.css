@@ -1,0 +1,193 @@
+@keyframes heartbeat {
+
+  0% { transform: scale(1); }
+
+  25% { transform: scale(1.25); }
+
+  50% { transform: scale(1); }
+
+  75% { transform: scale(1.25); }
+
+  100% { transform: scale(1); }
+
+}
+
+
+
+.heartbeat {
+
+  display: inline-block;
+
+  animation: heartbeat 1s infinite;
+
+}
+
+
+
+
+@keyframes spin {
+
+  from { transform: rotate(0deg); }
+
+  to { transform: rotate(360deg); }
+
+}
+
+
+
+.spinner {
+
+  display: inline-block;
+
+  animation: spin 2s linear infinite;
+
+}
+
+
+
+@keyframes bounce {
+
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+
+  40% { transform: translateY(-30px); }
+
+  60% { transform: translateY(-15px); }
+
+}
+
+
+
+.bouncer {
+
+  display: inline-block;
+
+  animation: bounce 2s infinite;
+
+}
+
+
+
+@keyframes float {
+
+  0% { transform: translateY(0px); }
+
+  50% { transform: translateY(-20px); }
+
+  100% { transform: translateY(0px); }
+
+}
+
+
+
+.floater {
+
+  display: inline-block;
+
+  animation: float 6s ease-in-out infinite;
+
+}
+
+
+
+@keyframes flip {
+
+  0% { transform: rotateY(0deg); }
+
+  100% { transform: rotateY(360deg); }
+
+}
+
+
+
+.flipper {
+
+  display: inline-block;
+
+  animation: flip 3s linear infinite;
+
+}
+
+
+
+@keyframes shake {
+  0% { transform: translateX(0px); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(5px); }
+}
+
+.shaker {
+  display: inline-block;
+  animation: shake 0.5s linear infinite;
+}
+
+
+
+@keyframes marquee {
+
+  0% { transform: translateX(100%); }
+
+  100% { transform: translateX(-100%); }
+
+}
+
+
+.marquee {
+
+  overflow: hidden;
+
+  position: relative;
+
+}
+
+
+.marquee-content {
+
+  display: inline-block;
+
+  white-space: nowrap;
+
+  padding-left: 100%;
+
+  animation: marquee 10s linear infinite;
+
+}
+
+
+@keyframes rainbow-text {
+  0% { color: red; }
+  5% { color: cyan; }
+  10% { color: purple; }
+  15% { color: orange; }
+  30% { color: yellow; }
+  45% { color: green; }
+  60% { color: blue; }
+  75% { color: indigo; }
+  90% { color: violet; }
+  100% { color: red; }
+}
+
+.rainbow {
+  animation: rainbow-text 10s linear infinite;
+}
+
+
+@keyframes typewriter {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid;
+  animation: typewriter 4s steps(44) 1s infinite normal both,
+             blink-caret .75s step-end infinite;
+}
+
+/* 光标闪烁效果 */
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: black; }
+}
