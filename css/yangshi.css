@@ -191,3 +191,16 @@
   from, to { border-color: transparent; }
   50% { border-color: black; }
 }
+
+
+li:not([class]) a:not([class]),
+p:not([class]) a:not([class]),
+table a:not([class]) {
+  color: var(--theme-link);
+  background: linear-gradient(0deg, var(--theme-link-opa), var(--theme-link-opa)) no-repeat left 100% / 100% 2.5px;
+}
+
+
+article h2:not([class]) {
+  background: linear-gradient(0, var(--text-meta), var(--text-meta)) no-repeat center bottom / 100% 2px;
+}
