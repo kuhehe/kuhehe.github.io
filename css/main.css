@@ -782,6 +782,7 @@ html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   scroll-padding-top: 8px;
+  scroll-behavior: smooth;
 }
 body {
   background: var(--site-bg);
@@ -6230,4 +6231,27 @@ img[data-fancybox] {
   z-index: 1;
   margin-right: 1rem;
   border-radius: 8px;
+}
+.md-text p.katex-block,
+.md-text .katex-display {
+  overflow: scroll;
+}
+.md-text p.katex-block::-webkit-scrollbar,
+.md-text .katex-display::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+}
+.md-text p.katex-block::-webkit-scrollbar-track-piece,
+.md-text .katex-display::-webkit-scrollbar-track-piece {
+  background: transparent;
+}
+.md-text p.katex-block::-webkit-scrollbar-thumb,
+.md-text .katex-display::-webkit-scrollbar-thumb {
+  background: var(--text-meta);
+  cursor: pointer;
+  border-radius: 0;
+}
+.md-text p.katex-block::-webkit-scrollbar-thumb:hover,
+.md-text .katex-display::-webkit-scrollbar-thumb:hover {
+  background: var(--text-p3);
 }

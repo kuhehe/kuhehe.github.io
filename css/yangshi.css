@@ -218,3 +218,7 @@ article h2:not([class]) {
   content: attr(data-sub);
   opacity: .6;
 }
+
+strong {
+    background: linear-gradient(0, var(--theme-link-opa), var(--theme-link-opa)) no-repeat center bottom / 100% 40%;
+}
