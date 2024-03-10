@@ -6108,10 +6108,10 @@ table a:not([class]):has(img):hover {
   border-radius: 12px;
 }
 img.lazy {
-  transition: all 0.38s ease-out;
-  -moz-transition: all 0.38s ease-out;
-  -webkit-transition: all 0.38s ease-out;
-  -o-transition: all 0.38s ease-out;
+  transition: all 0.75s ease-out;
+  -moz-transition: all 0.75s ease-out;
+  -webkit-transition: all 0.75s ease-out;
+  -o-transition: all 0.75s ease-out;
 }
 img.lazy:not(.loaded) {
   opacity: 0;
@@ -6119,6 +6119,15 @@ img.lazy:not(.loaded) {
 img.lazy.loaded,
 img.lazy.error {
   opacity: 1;
+}
+img.lazy:not(.loaded) {
+  filter: blur(50px);
+  -webkit-filter: blur(50px);
+}
+img.lazy.loaded,
+img.lazy.error {
+  filter: none;
+  -webkit-filter: none;
 }
 :root {
   --swiper-theme-color: #1cd0fd !important;
