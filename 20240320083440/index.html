@@ -1,0 +1,852 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0" theme-name="Stellar" theme-version="1.27.0">
+  
+  <meta name="generator" content="Hexo 7.0.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>无服务器白嫖serv00免费搭建Alist个人网盘 - 小小呵</title>
+
+  
+    <meta name="description" content="最近在网上发现一个可以免费部署alist的办法，昨天成功搭建完成！所以这里记录一下搭建过程  Serv00 是一个提供 免费 的Virtual Host的平台，其托管平台使用的是FreeBSD系统，并不是Linux。每个账号有效期10年，超过 三个月 不登入Panel以及SSH则会被删除账号。 其提供的服务大致如下表所示：    名称 Serv00 免费提供    存储空间 3 GB   每月流量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="无服务器白嫖serv00免费搭建Alist个人网盘">
+<meta property="og:url" content="https://kuhehe.github.io/20240320083440/">
+<meta property="og:site_name" content="小小呵">
+<meta property="og:description" content="最近在网上发现一个可以免费部署alist的办法，昨天成功搭建完成！所以这里记录一下搭建过程  Serv00 是一个提供 免费 的Virtual Host的平台，其托管平台使用的是FreeBSD系统，并不是Linux。每个账号有效期10年，超过 三个月 不登入Panel以及SSH则会被删除账号。 其提供的服务大致如下表所示：    名称 Serv00 免费提供    存储空间 3 GB   每月流量">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-0f3b0d1861e310f672a9f228de6d16cc_1440w.webp">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-29b69c403e9bb492ea1e75dad8cc6aa5_1440w.webp">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-a3ae7c972a622d7ab3b137f7f0eb7243_1440w.webp">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-494fc0693210873b8a122e3e33403be4_1440w.webp">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-8b0cca6d0ff3e209e7b1780205cc6b50_1440w.webp">
+<meta property="og:image" content="https://bu.dusays.com/2024/03/20/65fa388803555.jpg">
+<meta property="og:image" content="https://bu.dusays.com/2024/03/20/65fa414a2890c.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-f6b1c1086558dab0fdcb382180438599_1440w.webp">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-428d35264f44fe6b12152658813114d6_1440w.webp">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-722472003c13bc70e85ad58d7902038a_1440w.webp">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-8aef51a10357b6c41bab39cee776a0bd_1440w.webp">
+<meta property="article:published_time" content="2024-03-20T00:34:40.000Z">
+<meta property="article:modified_time" content="2024-03-20T04:21:36.415Z">
+<meta property="article:author" content="酷小呵">
+<meta property="article:tag" content="alist">
+<meta property="article:tag" content="serv00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic1.zhimg.com/80/v2-0f3b0d1861e310f672a9f228de6d16cc_1440w.webp">
+  
+  
+  
+  <meta name="keywords" content="alist,serv00">
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="小小呵" type="application/atom+xml">
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.27.0">
+
+  
+
+  
+
+  <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css" media="all" /><script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script><script type="text/javascript" src="/js/ClickShowText.js"></script><script src="https://kit.fontawesome.com/c808b5e970.js" crossorigin="anonymous"></script><link rel="stylesheet" href="/css/yangshi.css"><link rel="stylesheet" href="/css/font.css">
+</head>
+<body>
+
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://bu.dusays.com/2024/02/06/65c1ce484c3da.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">小小呵</div><div class="sub normal cap">浏览器搜索：酷小呵博客</div><div class="sub hover cap" style="opacity:0"> www.kuhehe.top</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" class="icon search-icon" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"><a class="nav-item active" title="博客" href="/" style="color:#1BCDFC"><span>博客</span></a><a class="nav-item" title="文档" href="/wiki/" style="color:#3DC550"><span>文档</span></a><a class="nav-item" title="导航" href="/%E7%AC%94%E8%AE%B0/" style="color:#FA6400"><span>导航</span></a><a class="nav-item" title="更多" href="/about/" style="color:#F44336"><span>更多</span></a></nav>
+</div>
+<div class="widgets">
+<widget class="widget-wrapper markdown"><div class="widget-header dis-select"><span class="name">🥝 欢迎光临</span></div><div class="widget-body fs14"><center> 小导航 </center>
+
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://simhaoka.com/seller/index?id=BEB2EC5A50CFC026883BD3CB2645EC14"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://bu.dusays.com/2024/03/19/65f8e39e81c94.png"></a></p>
+
+<div class="linklist center" style="grid-template-columns:repeat(2,1fr);">
+<a class="link" title="夸克资源" href="/quark/"><div class="flex"><svg t="1706863113316" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4284" width="200" height="200"><path d="M593.322667 633.984c41.386667-49.664 137.984 3.2 150.186666-93.866667a228.352 228.352 0 0 0-65.706666-194.005333 234.24 234.24 0 0 0-331.690667 0 234.24 234.24 0 0 0 0 331.690667 232.874667 232.874667 0 0 0 168.96 68.821333c98.432-3.541333 34.645333-61.482667 78.250667-112.64z m-413.013334 209.621333c-183.509333-183.04-183.509333-480.256 0-663.296 183.04-183.509333 480.256-183.509333 663.296 0 183.509333 183.04 183.509333 480.256 0 663.296-183.04 183.509333-480.256 183.509333-663.296 0z" fill="#2012D9" p-id="4285"></path></svg><span>夸克资源</span></div></a>
+<a class="link" title="迅雷资源" href="/xunlei/"><div class="flex"><svg t="1706865477901" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6801" width="200" height="200"><path d="M3.257972 240.634955C4.240649 124.603462 81.486631 2.664567 233.582375 2.192126c152.091965-0.510236 416.828966 0 555.65101 1.455118 138.746453 1.455118 232.293538 93.891021 232.293538 239.425506 0 145.538264 0.472441 385.001565 0.472441 535.456995 0 150.45165-97.957793 244.380466-262.805663 243.356214-164.84787-0.944882-362.732589 0.514016-508.879358 0C104.163796 1021.417298 6.682223 943.218874 3.768208 769.678091 0.778602 596.137308 2.271515 356.670227 3.257972 240.634955z" fill="#3475ED" p-id="6802"></path><path d="M80.190253 219.764404c48.702991 17.230866 181.817948 76.4674 187.959681 168.665193 0 34.654487-10.31811 50.154329-9.331654 95.383934 0.23811 61.205668 36.185196 126.61795 86.619211 166.185823 53.389605 45.237164 149.612595 76.70173 200.401885 117.569761 58.46929 38.037164 175.362515 158.989602 175.362515 158.989602s-86.891336-209.453853-133.114957-286.866134c74.294171-41.298897 357.77007-80.632439 357.770069-80.632439-25.829291-25.330393-168.551807-88.501415-253.94645-87.556534 41.102361-63.405353 120.593383-181.409759 120.593383-181.409759l-27.560314 4.172598c34.922834-75.208817 73.783935-135.193697 109.731021-183.609444-154.064878 40.784881-315.722827 126.100154-461.873375 245.087238-21.414803-32.451023-75.787085-102.270234-141.501729-100.577005-25.825511 0-34.960629 1.492913-51.654802 11.092913-47.99244-20.651338-110.241257-42.557479-159.458263-46.495747z" fill="#FCFCFC" p-id="6803"></path></svg><span>迅雷资源</span></div></a>
+<a class="link" title="打赏小呵" href="/reward/"><div class="flex"><svg t="1706887356102" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4306" width="200" height="200"><path d="M535.04 881.7152c0 14.1312-11.4688 25.6-25.6 25.6s-25.6-11.4688-25.6-25.6V484.5568H150.2208v335.3088c0 55.2448 44.7488 99.9936 99.9936 99.9936h523.5712c55.2448 0 99.9936-44.7488 99.9936-99.9936V484.5568H535.04v397.1584z" fill="#F5504E" p-id="4307"></path><path d="M866.2528 257.7408H786.432c18.2784-36.608 13.9776-81.7152-14.3872-114.944-36.5568-42.9568-100.1472-49.5104-144.7424-14.9504L512 217.2416 396.6976 127.8464a105.18016 105.18016 0 0 0-144.7424 14.9504c-28.3136 33.2288-32.6144 78.336-14.3872 114.944H157.7472c-41.5232 0-75.1616 33.6384-75.1616 75.1616v26.1632c0 41.5232 33.6384 75.1616 75.1616 75.1616H483.84V290.4576c0-14.1312 11.4688-25.6 25.6-25.6s25.6 11.4688 25.6 25.6V434.2272h331.2128c41.5232 0 75.1616-33.6384 75.1616-75.1616v-26.1632c0-41.5232-33.6384-75.1616-75.1616-75.1616z m-198.144-77.312a38.7584 38.7584 0 0 1 53.2992 5.5296 38.54848 38.54848 0 0 1-3.6352 54.016l-19.8144 17.7664h-105.7792l-16.9984-5.2224 92.928-72.0896zM306.2784 239.9744a38.54848 38.54848 0 0 1-3.6352-54.016 38.67136 38.67136 0 0 1 29.5424-13.6704c8.2944 0 16.6912 2.6624 23.7568 8.1408l92.9792 72.0896-16.9984 5.2224H326.0928l-19.8144-17.7664zM873.7792 601.5488V484.5568H535.04v343.1936c143.7184-23.2448 265.5232-108.3392 338.7392-226.2016zM150.2208 727.4496c89.1392 70.8608 203.1616 111.3088 325.888 106.24 2.6112-0.1024 5.1712-0.256 7.7824-0.4096V484.5568H150.2208v242.8928z" fill="#FF5A5A" p-id="4308"></path><path d="M150.2208 608.9728c70.6048 34.2528 150.4768 52.0704 234.3424 48.64 34.1504-1.3824 67.328-6.2464 99.2768-14.2336V484.5568H150.2208v124.416zM535.04 484.5568v143.104c80.128-29.6448 150.1696-79.4624 204.1856-143.104H535.04zM535.04 434.2272h241.7152a489.59488 489.59488 0 0 0 70.8096-176.4864H786.432c18.2784-36.608 13.9776-81.7152-14.3872-114.944-36.5568-42.9568-100.1472-49.5104-144.7424-14.9504L512 217.2416 396.6976 127.8464a105.18016 105.18016 0 0 0-144.7424 14.9504c-28.3136 33.2288-32.6144 78.336-14.3872 114.944H157.7472c-41.5232 0-75.1616 33.6384-75.1616 75.1616v26.1632c0 41.5232 33.6384 75.1616 75.1616 75.1616H483.84V290.4576c0-14.1312 11.4688-25.6 25.6-25.6s25.6 11.4688 25.6 25.6V434.2272zM431.872 257.7408H326.0928l-19.8144-17.7664a38.54848 38.54848 0 0 1-3.6352-54.016 38.67136 38.67136 0 0 1 29.5424-13.6704c8.2944 0 16.6912 2.6624 23.7568 8.1408l92.9792 72.0896-17.0496 5.2224z m236.2368-77.312a38.7584 38.7584 0 0 1 53.2992 5.5296 38.54848 38.54848 0 0 1-3.6352 54.016l-19.8144 17.7664h-105.7792l-16.9984-5.2224 92.928-72.0896z" fill="#F66A68" p-id="4309"></path><path d="M535.04 395.0592a494.04928 494.04928 0 0 0 131.7376-137.3184h-74.6496l-16.9984-5.2224 92.9792-72.0896a38.70208 38.70208 0 0 1 40.8576-4.1472 487.2704 487.2704 0 0 0 20.6848-63.5392c-33.3312-12.8-72.1408-8.2944-102.3488 15.104L512 217.2416 396.6976 127.8464a105.18016 105.18016 0 0 0-144.7424 14.9504c-28.3136 33.2288-32.6144 78.336-14.3872 114.944H157.7472c-41.5232 0-75.1616 33.6384-75.1616 75.1616v26.1632c0 41.5232 33.6384 75.1616 75.1616 75.1616h310.9888c5.0688-2.5088 10.1376-5.0176 15.104-7.68V290.4576c0-14.1312 11.4688-25.6 25.6-25.6s25.6 11.4688 25.6 25.6v104.6016zM431.872 257.7408H326.0928l-19.8144-17.7664a38.54848 38.54848 0 0 1-3.6352-54.016 38.67136 38.67136 0 0 1 29.5424-13.6704c8.2944 0 16.6912 2.6624 23.7568 8.1408l92.9792 72.0896-17.0496 5.2224z" fill="#F67271" p-id="4310"></path><path d="M396.6976 127.8464a105.18016 105.18016 0 0 0-144.7424 14.9504c-28.3136 33.2288-32.6144 78.336-14.3872 114.944H157.7472c-35.2256 0-64.7168 24.2688-72.8576 56.9856a450.01216 450.01216 0 0 0 105.5744 8.1408c78.848-3.2256 152.1152-26.6752 215.04-65.1264H326.0928l-19.8144-17.7664a38.54848 38.54848 0 0 1-3.6352-54.016 38.67136 38.67136 0 0 1 29.5424-13.6704c8.2944 0 16.6912 2.6624 23.7568 8.1408l76.5952 59.392c18.5344-13.2608 35.9936-27.8528 52.2752-43.7248L396.6976 127.8464z" fill="#F67B7A" p-id="4311"></path></svg><span>打赏小呵</span></div></a>
+<a class="link" title="大流量卡" target="_blank" rel="noopener" href="https://www.kuhehe.top/llk"><div class="flex"><svg t="1706863606718" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5714" width="200" height="200"><path d="M841.7792 287.744l-123.0848-148.1216a117.01248 117.01248 0 0 0-90.0608-42.24H293.6832c-64.6656 0-117.0944 52.4288-117.0944 117.0944V819.2c0 64.6656 52.4288 117.0944 117.0944 117.0944h458.0352c64.6656 0 117.0944-52.4288 117.0944-117.0944V362.5984c0-27.3408-9.5744-53.8112-27.0336-74.8544z m-148.8896 503.7568H352.512c-14.5408 0-26.368-11.8272-26.368-26.368v-154.1632c0-14.5408 11.8272-26.368 26.368-26.368h340.3776c14.5408 0 26.368 11.8272 26.368 26.368v154.1632c0 14.5408-11.776 26.368-26.368 26.368z" fill="#6C6CEA" p-id="5715"></path><path d="M868.8128 449.0752V362.5984c0-27.3408-9.5744-53.8112-27.0336-74.8544l-123.0848-148.1216a117.01248 117.01248 0 0 0-90.0608-42.24H293.6832c-64.6656 0-117.0944 52.4288-117.0944 117.0944V819.2c0 22.1184 6.2464 42.752 16.9472 60.416 28.9792 4.1984 58.624 6.4512 88.7808 6.4512 120.2176 0 232.3456-34.7136 326.912-94.5664H352.512c-14.5408 0-26.368-11.8272-26.368-26.368v-154.1632c0-14.5408 11.8272-26.368 26.368-26.368h340.3776c14.5408 0 26.368 11.8272 26.368 26.368v91.5456c68.7616-70.1952 120.7808-156.7744 149.5552-253.44z" fill="#757BF2" p-id="5716"></path><path d="M718.6944 139.6736a117.08928 117.08928 0 0 0-90.0608-42.24H293.6832c-64.6656 0-117.0944 52.4288-117.0944 117.0944v451.1744c52.0192-5.2224 102.144-16.9472 149.5552-34.3552v-20.3776c0-14.5408 11.8272-26.368 26.368-26.368h72.2432c157.44-92.6208 269.7728-253.696 296.0896-442.2656l-2.1504-2.6624z" fill="#8486F8" p-id="5717"></path><path d="M516.4032 97.3824h-222.72c-64.6656 0-117.0944 52.4288-117.0944 117.0944v198.6048c150.4256-56.6272 272.64-170.8032 339.8144-315.6992z" fill="#8D92F8" p-id="5718"></path><path d="M371.7632 672.0512h304.8448v41.9328H371.7632z" fill="#757BF2" p-id="5719"></path></svg><span>大流量卡</span></div></a>
+<a class="link" title="免责声明" href="/mianze/"><div class="flex"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="#ff0000" d="M18.75 9v.704c0 .845.24 1.671.692 2.374l1.108 1.723c1.011 1.574.239 3.713-1.52 4.21a25.794 25.794 0 0 1-14.06 0c-1.759-.497-2.531-2.636-1.52-4.21l1.108-1.723a4.393 4.393 0 0 0 .693-2.374V9c0-3.866 3.022-7 6.749-7s6.75 3.134 6.75 7" opacity=".5"/><path fill="#ff0000" d="M7.243 18.545a5.002 5.002 0 0 0 9.513 0c-3.145.59-6.367.59-9.513 0M9.349 9c0 .414.323.75.723.75h2.11L9.56 12.47a.77.77 0 0 0-.156.817c.112.28.375.463.668.463h3.856c.4 0 .723-.336.723-.75a.737.737 0 0 0-.723-.75h-2.11l2.622-2.72a.77.77 0 0 0 .157-.817a.723.723 0 0 0-.669-.463h-3.856c-.4 0-.723.336-.723.75"/></svg><span>免责声明</span></div></a>
+<a class="link" title="投稿留言" target="_blank" rel="noopener external nofollow noreferrer" href="https://flowus.cn/form/c3e42855-dc21-49c9-9292-09606f2984ff?code=14QS4G"><div class="flex"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="#19e079" fill-rule="evenodd" d="m10.404 22.48l.275-.465c.44-.745.66-1.117 1.012-1.325c.351-.207.81-.222 1.725-.252c.859-.027 1.436-.102 1.93-.306a4.241 4.241 0 0 0 2.295-2.296c.323-.779.323-1.767.323-3.743v-.848c0-2.777 0-4.165-.625-5.185c-.35-.57-.83-1.05-1.4-1.4c-1.02-.625-2.408-.625-5.185-.625H8.21c-2.777 0-4.165 0-5.185.625c-.57.35-1.05.83-1.4 1.4C1 9.08 1 10.468 1 13.245v.848c0 1.976 0 2.964.323 3.744a4.241 4.241 0 0 0 2.295 2.295c.494.204 1.07.28 1.93.306c.916.03 1.374.045 1.725.252c.35.208.571.58 1.012 1.325l.275.465c.41.692 1.434.692 1.844 0m2.789-7.963a1.06 1.06 0 1 0 0-2.12a1.06 1.06 0 0 0 0 2.12m-2.65-1.06a1.06 1.06 0 1 1-2.121 0a1.06 1.06 0 0 1 2.12 0m-4.772 1.06a1.06 1.06 0 1 0 0-2.12a1.06 1.06 0 0 0 0 2.12" clip-rule="evenodd"/><path fill="#19e079" d="M15.486 1c1.267 0 2.274 0 3.082.077c.829.079 1.53.244 2.153.626a4.77 4.77 0 0 1 1.575 1.575c.383.624.548 1.325.627 2.153c.076.808.076 1.816.076 3.082v.866c0 .901 0 1.619-.04 2.2c-.04.595-.125 1.106-.323 1.584a4.77 4.77 0 0 1-2.67 2.617c-.141.054-.262.1-.368.135h-1.65c.016-.499.016-1.093.016-1.822v-.848c0-2.777 0-4.165-.625-5.185c-.35-.57-.83-1.05-1.4-1.4c-1.02-.625-2.408-.625-5.185-.625H8.21c-.986 0-1.796 0-2.478.028v-1.65c.033-.114.078-.244.13-.396c.09-.26.203-.505.346-.739a4.771 4.771 0 0 1 1.576-1.575c.624-.382 1.324-.547 2.153-.626C10.745 1 11.752 1 13.019 1z" opacity=".5"/></svg><span>投稿留言</span></div></a>
+<a class="link" title="广告合作" href="/ads/"><div class="flex"><span>广告合作</span></div></a></div></div></widget>
+
+<widget class="widget-wrapper timeline"><div class="widget-header dis-select"><span class="name">时间线广告</span></div><div class="widget-body fs14"><div class="tag-plugin timeline ds-memos" api="https://talk.kuhehe.top/?tag=广告&limit=5&showtag=false" hide="user"></div></div></widget>
+
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/20240320083440/"><span class="title">无服务器白嫖serv00免费搭建Alist个人网盘</span></a><a class="item title" target="_blank" rel="noopener external nofollow noreferrer" href="https://simhaoka.com/phone/index?id=BEB2EC5A50CFC026883BD3CB2645EC14"><span class="title">官方正品超值大流量卡</span></a><a class="item title" href="/20240317091307/"><span class="title">《高级会计学》笔记</span></a><a class="item title" href="/20240129172233/"><span class="title">2024 年 · 每日分享</span></a><a class="item title" href="/20240120224502/"><span class="title">分享一些基于Alist搭建的资源站合集</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%95%99%E7%A8%8B/">教程</a></div>
+<div class="flex-row" id="post-meta"><a class="author" href="/author/%E9%85%B7%E5%B0%8F%E5%91%B5/">酷小呵</a><span class="sep"></span><span class="text created"><time datetime="2024-03-20T00:34:40.000Z">2024-03-20</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-03-20T04:21:36.415Z">2024-03-20</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>无服务器白嫖serv00免费搭建Alist个人网盘</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><div class="tag-plugin colorful note" color="green"><div class="body"><p>最近在网上发现一个可以免费部署alist的办法，昨天成功搭建完成！<br>所以这里记录一下搭建过程</p></div></div>
+
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.serv00.com/">Serv00</a> 是一个提供 <strong>免费</strong> 的Virtual Host的平台，其托管平台使用的是FreeBSD系统，并不是Linux。每个账号有效期10年，超过 <strong>三个月</strong> 不登入Panel以及SSH则会被删除账<br>号。</p>
+<p>其提供的服务大致如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>Serv00 免费提供</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>存储空间</td>
+<td>3 GB</td>
+</tr>
+<tr>
+<td>每月流量</td>
+<td>unlimited</td>
+</tr>
+<tr>
+<td>网站数量</td>
+<td>100</td>
+</tr>
+<tr>
+<td>MySQL</td>
+<td>10</td>
+</tr>
+<tr>
+<td>PostgreSQL</td>
+<td>3</td>
+</tr>
+<tr>
+<td>MongoDB</td>
+<td>3</td>
+</tr>
+<tr>
+<td>GIT&#x2F;SVN&#x2F;HG 仓库</td>
+<td>3</td>
+</tr>
+<tr>
+<td>TCP&#x2F;UDP端口</td>
+<td>3</td>
+</tr>
+<tr>
+<td>PHP解释器</td>
+<td>3</td>
+</tr>
+<tr>
+<td>系统进程</td>
+<td>15</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>512MB</td>
+</tr>
+<tr>
+<td>备份</td>
+<td>7天</td>
+</tr>
+<tr>
+<td>服务器放置</td>
+<td>欧盟</td>
+</tr>
+<tr>
+<td>免费子域名</td>
+<td><a target="_blank" rel="noopener external nofollow noreferrer" href="http://login.serv00.net/">http://login.serv00.net</a></td>
+</tr>
+<tr>
+<td>技术支持</td>
+<td>只有论坛</td>
+</tr>
+<tr>
+<td>SLA</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>现代技术</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>SSH访问</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>SSH隧道</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>远程数据库访问</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>固态硬盘</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>没有广告</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>价格</td>
+<td>免费</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>更详细的配置说明请查阅官方说明。</p>
+</blockquote>
+<h2 id="账号注册"><a href="#账号注册" class="headerlink" title="账号注册"></a><strong>账号注册</strong></h2><p>首先去<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.serv00.com/">serv00</a>的官网<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.serv00.com/offer/create_new_account">注册一个账号</a> ，最好 <strong>不要使用国内邮箱</strong> (我用的QQ邮箱，因为我没有其他邮箱了)，注册信息请尽可能真实填写。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic1.zhimg.com/80/v2-0f3b0d1861e310f672a9f228de6d16cc_1440w.webp" alt="注册serv00账号"></p>
+<p>接着你可以在 <code>邮箱</code> 里收到你的 <code>注册信息</code> 的邮件：</p>
+<p>列几个需要用到的几个内容：</p>
+<ul>
+<li><code>Login</code> : 登陆Panel的用户名</li>
+<li><code>Password</code> : 密码</li>
+<li><code>SSH/SFTP server address</code> : SSH的host地址</li>
+<li><code>MySQL server</code> : 数据库database的host地址</li>
+</ul>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic2.zhimg.com/80/v2-29b69c403e9bb492ea1e75dad8cc6aa5_1440w.webp" alt="邮箱注册信息"></p>
+<p>邮件最末有Panel的 <code>入口地址</code> (DevilWEB webpanel: 后的链接 ) 和<a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.serv00.com/">文档链接</a>以及<a target="_blank" rel="noopener external nofollow noreferrer" href="https://forum.serv00.com/">论坛链接</a></p>
+<p>接下来登入Panel进行操作：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic4.zhimg.com/80/v2-a3ae7c972a622d7ab3b137f7f0eb7243_1440w.webp" alt="DevilWEB"></p>
+<p>首先去左侧的 <code>Additional Service</code> 选项卡中，找到 <code>Run your own applications</code> 选项，将其设置为 <code>允许</code> ：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic1.zhimg.com/80/v2-494fc0693210873b8a122e3e33403be4_1440w.webp" alt="运行自己应用"></p>
+<p>接着去 <code>Port reservation</code> 选项卡，使用 <code>Add port</code> 功能，随机添加一个<code>TCP端口</code>：</p>
+<p>比如：xxxx    (这里举个例子，端口必须是数字哈！)</p>
+<p>(你点随机生成即可，或想一个可用的4位数字)</p>
+<p><code>记住</code>你添加的端口，后面要用到</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic1.zhimg.com/80/v2-8b0cca6d0ff3e209e7b1780205cc6b50_1440w.webp" alt="添加端口"></p>
+<p>接着使用 <code>SSH</code> 登入到你的账户，我使用的SSH客户端是这个：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://kuhehe.lanzouj.com/ialST1ryd3gf">JuiceSSH</a> 安卓端的！</p>
+<div class="tag-plugin image"><div class="image-bg" style="background:white;padding:16px;"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://bu.dusays.com/2024/03/20/65fa388803555.jpg" style="width:200px;"/></div></div>
+
+<p>图片上填写你的 <code>SSH地址</code> 确定即可</p>
+<p><code>第一次</code> 链接ssh，大概会出现下面内容，建议<code>复制记住</code>，并接受哈！再次连接时，貌似要用到的！</p>
+<div class="tag-plugin image"><div class="image-bg" style="background:white;padding:16px;"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://bu.dusays.com/2024/03/20/65fa414a2890c.jpg" style="width:200px;"/></div></div>
+
+<p>后面好像(我记性不太好)有<code>记住密码</code>这一项，勾选，以防忘记！</p>
+<p>之后点击<code>常用</code> 里面你添加的ssh即可再次连接！我点击直接就进去了，没有输入密码(可能是选了记住密码吧)</p>
+<h2 id="部署Alist"><a href="#部署Alist" class="headerlink" title="部署Alist"></a><strong>部署Alist</strong></h2><p>Serv00本身提供的网站托管在 <code>~/domains</code> 路径下，所以我建议把Alist也部署到这个路径下的子目录：</p>
+<p>点击按钮复制命令，到手机登录好的SSH里，粘贴并回车！</p>
+<div class="tag-plugin copy"><input class="copy-area" id="copy_48" value="mkdir -p ~/domains/alist && cd ~/domains/alist"><button class="copy-btn" onclick="util.copy(&quot;copy_48&quot;,&quot;复制成功&quot;)"><svg class="icon copy-btn" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg></button></div>
+
+
+<div class="tag-plugin colorful note" color="blue"><div class="body"><p><strong>解释一下</strong><br>这里你可能对命令有点晕，我稍作解释一下(只了解一点点)：</p><p><code>mkdir</code> : 意思是新建文件夹</p><p><code>cd</code> : 进入某个文件夹</p><p>比如运行了上述命令之后，你就在<code>domains</code>文件夹下新建了一个<code>alist</code>文件夹，并已经进去到<code>alist</code>文件夹下，如果重新连接ssh，要想进去<code>alist</code>文件夹，可以这样：</p><p>SSH中输入<code>cd domains/alist</code> 并回车就进去到了<code>alist</code>文件夹下！</p></div></div>
+
+<p>接着下载目前 <code>uubulb/alist-freebsd</code> 提供的最新版的Alist的可执行二进制文件构筑: </p>
+<p>点击右边按钮复制，粘贴到SSH中并回车！</p>
+<div class="tag-plugin copy"><input class="copy-area" id="copy_49" value="wget https://github.com/uubulb/alist-freebsd/releases/download/v3.30.0/alist && chmod +x alist"><button class="copy-btn" onclick="util.copy(&quot;copy_49&quot;,&quot;复制成功&quot;)"><svg class="icon copy-btn" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg></button></div>
+
+<p>然后需要先启动一次Alist以生成配置文件，此次启动一定会失败，请不用在意：</p>
+<p>点击右边按钮复制，粘贴到SSH中并回车！</p>
+<div class="tag-plugin copy"><input class="copy-area" id="copy_50" value="./alist server"><button class="copy-btn" onclick="util.copy(&quot;copy_50&quot;,&quot;复制成功&quot;)"><svg class="icon copy-btn" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg></button></div>
+
+
+<p>接着回到Panel中，找到<code>MySQL</code>选项卡，使用<code>Add database</code>功能新建一个数据库：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic2.zhimg.com/80/v2-f6b1c1086558dab0fdcb382180438599_1440w.webp" alt="创建数据库"></p>
+<p>然后在<code>Database list</code> 刷新一下，即可看到添加好的数据库，请记住 <code>database_name</code> 的内容！(后面会用到)</p>
+<blockquote>
+<p>密码要求含有大写字母、小写字母和数字三种字符，且长度必须超过6个字符。</p>
+</blockquote>
+<p>接下来进入<code>File manager</code>选项卡，进入<code>~/domains/alist/data</code> 路径，可以看到一个名为 <code>config.json</code> 的文件，右键点击，选择 <code>View/Edit</code> ➽ <code>Source Editor</code>，进行编辑：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic3.zhimg.com/80/v2-428d35264f44fe6b12152658813114d6_1440w.webp" alt="修改config.json内容"></p>
+<p>我主要修改了<code>CDN</code>、<code>database</code>、<code>scheme</code> 三个部分，其中CDN可以在<a target="_blank" rel="noopener external nofollow noreferrer" href="https://alist.nn.ci/zh/config/configuration.html#cdn">Alist的官方文档</a>找到，请选择你本地网络连接速度最快的一个。</p>
+<p><code>scheme</code> 部分: </p>
+<ul>
+<li><code>adress</code> 修改为<code>127.0.0.1</code> 本地回环，是为了避免被他人使用<code>http://ip:port</code> 的方式进行访问。至于自己怎么访问，我在本文后面的部分会进行介绍。</li>
+<li><code>http_port</code>: 要改成自己前面<code>放行的端口</code>。(比如刚才添加的<code>TCP端口</code>：xxxx )</li>
+</ul>
+<p><code>database</code> 部分: </p>
+<ul>
+<li><code>type</code>: 需要改成 <code>mysql</code>，</li>
+<li><code>host</code>: 填写你在注册邮件信息中看到的mysql的地址，即邮件中 <code>MySQL server:</code> 后面的地址，</li>
+<li><code>port</code>: 是默认的<code>3306</code> ，</li>
+<li>密码<code>password</code> 则按照你创建的情况进行填写。</li>
+<li>用户名<code>user</code> 和 数据库名 <code>name</code> 均填写上面记住的 <code>database_name</code> 内容！</li>
+</ul>
+<p>改完之后，点击左上角<code>save</code>保存，接着回到手机SSH窗口中进行操作。</p>
+<blockquote>
+<p>如果发现ssh连接退出了，那就再次连接，然后进入<code>alist文件夹</code> (输入命令：<code>cd domains/alist</code> 并回车 )</p>
+</blockquote>
+<p>然后，先启动alist一次，查看运行是否正常:</p>
+<p>点击右边按钮复制，粘贴到SSH中并回车！</p>
+<div class="tag-plugin copy"><input class="copy-area" id="copy_51" value="./alist server"><button class="copy-btn" onclick="util.copy(&quot;copy_51&quot;,&quot;复制成功&quot;)"><svg class="icon copy-btn" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg></button></div>
+
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic3.zhimg.com/80/v2-722472003c13bc70e85ad58d7902038a_1440w.webp" alt="试运行alist"></p>
+<p>记住里 <code>password</code> 后内容，即为登录alist需要用到的管理员<code>密码</code>！</p>
+<p>运行正常，记得把管理员用户的<code>密码记住</code>。接着使用<code>Ctrl+c</code>停止运行。</p>
+<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a><strong>绑定域名</strong></h2><p>此时还没有访问Alist的方法，因为监听的地址是本地回环，所以需要将其反向代理出来。我选择使用Cloudflare提供的Argo通道，顺带给Alist绑定<code>自己的域名</code>。</p>
+<p>Cloudflared官方仓库没有提供FreeBSD平台的客户端，但是和Alist一样的，我找到了Unofficial的FreeBSD版本的<a target="_blank" rel="noopener external nofollow noreferrer" href="https://cloudflared.bowring.uk/">构筑</a>，接下来使用它打隧道：</p>
+<p><strong>新建并进入Cloudflared的工作目录</strong> ：</p>
+<div class="tag-plugin copy"><input class="copy-area" id="copy_52" value="mkdir -p ~/domains/cloudflared && cd ~/domains/cloudflared"><button class="copy-btn" onclick="util.copy(&quot;copy_52&quot;,&quot;复制成功&quot;)"><svg class="icon copy-btn" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg></button></div>
+
+<p>先点击右边复制命令</p>
+<blockquote>
+<p>要运行该命令，需要先退出ssh，重新连接，然后直接粘贴命令，后回车即可！</p>
+<p><code>不要</code> 在<code>domains/alist</code>文件夹下运行，这里是为了防止你搞错，所以提醒了一下！</p>
+</blockquote>
+<p><strong>下载Cloudflared</strong> ：</p>
+<blockquote>
+<p>如果上面命令弄完，不小心退出了连接，就请 <code>cd domains/cloudflared</code> 进入到<code>domains/cloudflared</code>文件夹下。如没退出连接，请忽略这句废话！</p>
+</blockquote>
+<p>因为这步命令是<code>紧接着</code>上面命令的！(即这一步是在<code>domains/cloudflared</code> 文件夹下运行的。)</p>
+<p>然后，请点击复制下方命令，粘贴并回车，即可完成cloudflared的下载</p>
+<div class="tag-plugin copy"><input class="copy-area" id="copy_53" value="wget https://cloudflared.bowring.uk/binaries/cloudflared-freebsd-2023.10.0.7z && 7z x cloudflared-freebsd-2023.10.0.7z && rm cloudflared-freebsd-2023.10.0.7z && mv -f ./temp/cloudflared-freebsd-2023.10.0 ./cloudflared && rm -rf temp"><button class="copy-btn" onclick="util.copy(&quot;copy_53&quot;,&quot;复制成功&quot;)"><svg class="icon copy-btn" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg></button></div>
+<div class="tag-plugin colorful note" color="orange"><div class="body"><p>这里需要你提前注册一个<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.cloudflare-cn.com/">Cloudflare账号</a>，以方便下方步骤使用！</p></div></div>
+
+<p>在你的cloudflare控制面板，左边找到<code>zero trust</code> ，点击进入，然后找到<code>Networks</code>分类下的<code>Tunnels</code>功能，点击<code>Create a tunnel</code>，选择<code>Cloudflared</code>，Next，随便取个名字，Next，往下翻，可以看到<code>Run the following command</code>，然后给了一串命令，将其复制出来，大概是这样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cloudflared.exe service install eyJhIjoiNzh...............V5TWpBeSJ9</span><br></pre></td></tr></table></figure>
+
+<p>前面的不需要管，只需要保留最后<code>ey</code>开头的那串很长的<code>TOKEN</code> (请复制记住)，去SSH中测试运行Cloudflared：</p>
+<div class="tag-plugin copy"><input class="copy-area" id="copy_54" value="./cloudflared tunnel --edge-ip-version auto --protocol http2 --heartbeat-interval 10s run --token eyJhIjoiNzh...............V5TWpBeSJ9"><button class="copy-btn" onclick="util.copy(&quot;copy_54&quot;,&quot;复制成功&quot;)"><svg class="icon copy-btn" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg></button></div>
+
+<blockquote>
+<p>记得把最后的那一串<code>ey</code>开头的<code>替换</code>成你的<code>TOKEN</code>。</p>
+<p>我这里的复制框，可以直接编辑，然后点击右边复制哦！</p>
+</blockquote>
+<blockquote>
+<p>该命令在 <code>domains/cloudfalred</code> 文件夹下运行的，如果ssh连接不小心退出，该怎么做就不用我多说了(前面提醒过了)</p>
+</blockquote>
+<p>接着回到Cloudflare的面板，继续点击<code>Next</code>，然后添加一个自己的域名，<code>Service</code>中，<code>Type</code>选择<code>HTTP</code>，<code>URL</code>填写<code>localhost:PORT</code>，其中<code>PORT</code>为你的Alist对应的端口。(比如刚开始新建的端口为：<code>xxxx</code>，则这里应该写：<code>localhost:xxxx</code>)</p>
+<p>点击<code>Save Tunnel</code>后，可以看到自己新建的Tunnel上线。</p>
+<p>接着使用<code>Ctrl+c</code>停止运行。</p>
+<p>然后安装进程管理工具pm2：</p>
+<p>点击下方复制命令，然后直接粘贴并回车！</p>
+<div class="tag-plugin copy"><input class="copy-area" id="copy_55" value="bash <(curl -s https://raw.githubusercontent.com/k0baya/alist_repl/main/serv00/install-pm2.sh)"><button class="copy-btn" onclick="util.copy(&quot;copy_55&quot;,&quot;复制成功&quot;)"><svg class="icon copy-btn" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg></button></div>
+<blockquote>
+<p>此命令，脚本自动处理，随便你在那个文件夹运行都可以！</p>
+</blockquote>
+<p>然后使用pm2启动Cloudflared：</p>
+<blockquote>
+<p>命令怎么运行不用多说了吧🙃(前面说了好多遍了)</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/.npm-global/bin/pm2 start ./cloudflared -- tunnel --edge-ip-version auto --protocol http2 --heartbeat-interval 10s run --token eyJhIjoiNzh...............V5TWpBeSJ9</span><br></pre></td></tr></table></figure>
+
+<p>记得把最后的那一串ey开头的替换成你的<code>TOKEN</code>。</p>
+<blockquote>
+<p>该命令也是因为前面带目录了，所以随便在哪个文件夹下都可运行哈！(询问了大佬🙃)</p>
+</blockquote>
+<p>再启动Alist：</p>
+<p>点击复制下方命令，粘贴到ssh并回车！(看到了吗？命令里有<code>cd ~/domains/alist</code> 这句，说明该命令是要重新连接ssh，然后再直接粘贴命令并回车🙃)</p>
+<div class="tag-plugin copy"><input class="copy-area" id="copy_56" value="cd ~/domains/alist && ~/.npm-global/bin/pm2 start ./alist -- server"><button class="copy-btn" onclick="util.copy(&quot;copy_56&quot;,&quot;复制成功&quot;)"><svg class="icon copy-btn" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg></button></div>
+
+<p>到这里，就可以直接通过你的域名访问刚刚部署的Alist了。</p>
+<h2 id="收尾工作"><a href="#收尾工作" class="headerlink" title="收尾工作"></a><strong>收尾工作</strong></h2><p>听说Serv00会不定时重启机器，所以我们把pm2添加开机自启，可以保证每次重启都能由pm2调动Alist和Cloudflared。而且Serv00每三个月内必须要有一次登录面板或者SSH连接，不然会删号，也可以通过一个脚本解决问题，接下来我会详细说明。</p>
+<h3 id="自动定时SSH"><a href="#自动定时SSH" class="headerlink" title="自动定时SSH"></a><strong>自动定时SSH</strong></h3><p>在Panel中找到<code>File manager</code>选项卡，进入alist所在的路径，然后找到上方<code>Send</code>按钮左边的<code>+</code>，选择<code>New empty file</code> ，文件名命名为<code>auto-renew.sh</code>， 右键点击<code>auto-renew.sh</code>，选择<code>View/Edit </code>➽<code>Source Editor</code>，进行编辑，把下面的代码块的内容都复制进去：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">while true; do</span><br><span class="line">  sshpass -p &#x27;密码&#x27; ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -tt 用户名@ssh地址 &quot;exit&quot; &amp;</span><br><span class="line">  sleep 259200  #30天为259200秒</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>记得把其中的密码、用户名、ssh的地址修改为你自己的。(<code>密码</code>大概就是最开始第一次连接SSH的时候，记住的密码吧！) </p>
+</blockquote>
+<p>保存后回到SSH中，进入<code>auto-renew.sh</code> 所在的路径，并使用pm2管理运行它：</p>
+<p>直接复制下方命令，粘贴到SSH并回车</p>
+<div class="tag-plugin copy"><input class="copy-area" id="copy_57" value="cd ~/domains/alist && chmod +x auto-renew.sh && ~/.npm-global/bin/pm2 start ./auto-renew.sh"><button class="copy-btn" onclick="util.copy(&quot;copy_57&quot;,&quot;复制成功&quot;)"><svg class="icon copy-btn" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg></button></div>
+
+
+<p>这样就会每隔一个月自动执行一次SSH连接，自己SSH自己进行续期。</p>
+<h3 id="添加开机自启"><a href="#添加开机自启" class="headerlink" title="添加开机自启"></a><strong>添加开机自启</strong></h3><p>在Panel中找到<code>Cron jobs</code>选项卡，使用<code>Add cron job</code>功能添加任务：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://pic2.zhimg.com/80/v2-8aef51a10357b6c41bab39cee776a0bd_1440w.webp"></p>
+<p><code>Specify time</code>选择<code>After reboot</code>，即为重启后运行。<code>Form type</code>选择<code>Advanced</code>，Command写：</p>
+<div class="tag-plugin copy"><input class="copy-area" id="copy_58" value="/home/你的用户名/.npm-global/bin/pm2 resurrect"><button class="copy-btn" onclick="util.copy(&quot;copy_58&quot;,&quot;复制成功&quot;)"><svg class="icon copy-btn" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg></button></div>
+
+<blockquote>
+<p>记得把你的用户名改为你的用户名</p>
+</blockquote>
+<p>添加完之后，在SSH窗口保存pm2的当前任务列表快照：</p>
+<p>复制并在ssh粘贴下方命令后回车</p>
+<div class="tag-plugin copy"><input class="copy-area" id="copy_59" value="~/.npm-global/bin/pm2 save"><button class="copy-btn" onclick="util.copy(&quot;copy_59&quot;,&quot;复制成功&quot;)"><svg class="icon copy-btn" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M5.75 1a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75h-4.5zm.75 3V2.5h3V4h-3zm-2.874-.467a.75.75 0 00-.752-1.298A1.75 1.75 0 002 3.75v9.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0014 13.25v-9.5a1.75 1.75 0 00-.874-1.515.75.75 0 10-.752 1.298.25.25 0 01.126.217v9.5a.25.25 0 01-.25.25h-8.5a.25.25 0 01-.25-.25v-9.5a.25.25 0 01.126-.217z"></path></svg></button></div>
+
+<p>这样每次serv00不定时重启任务时，都能自动调用pm2读取保存的任务列表快照，恢复任务列表。</p>
+<p>以上就是Serv00搭建使用Alist的全部程！！！！！！！</p>
+
+<div class="article-footer fs14">
+    <section id="references">
+      <div class="header"><span>参考资料</span></div>
+      <div class="body">
+        <ul>
+        <li class="post-title">
+          <p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://zhuanlan.zhihu.com/p/680607217?utm_id=0">使用Serv00免费虚拟主机部署Alist</a></p>
+
+        </li>
+        
+        <li class="post-title">
+          <p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.rappit.site/">Saika’s Blog</a></p>
+
+        </li>
+        </ul>
+      </div>
+    </section>
+    
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/20240317091307/">《高级会计学》笔记</a></div></section></div>
+
+<div class="related-wrap" id="related-posts">
+    <section class='header'>
+      <div class='title cap theme'>您可能感兴趣的文章</div>
+    </section>
+    <section class='body'>
+    <div class="related-posts"><a class="item" href="/20240120224502/" title="分享一些基于Alist搭建的资源站合集"><span class="title">分享一些基于Alist搭建的资源站合集</span><span class="excerpt">Alist资源站合集分享</span></a><a class="item" href="/20240131195241/" title="自建抖音去水印"><span class="title">自建抖音去水印</span><span class="excerpt">自建抖音去水印的一个小教程！</span></a></div></section></div>
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs15">更多</span><a href="/mianze/">😑 免责声明</a></div><div class="sitemap-group"><span class="fs15">资源分享</span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://kuhehe.flowus.cn">资源文档</a><a href="/quark/">夸克资源</a><a href="/xunlei/">迅雷资源</a></div></div><div class="text"><p>本站由 <a href="/">酷小呵</a> 使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.27.0">Stellar 1.27.0</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+<center>
+<!--不蒜子计数器-->
+<script defer src="https://busuanzi.9420.ltd/js"></script>
+<!--添加一个访问量-->
+本文总阅读量 <span id="busuanzi_page_pv"></span> 次
+本文总访客量 <span id="busuanzi_page_uv"></span> 人
+本站总访问量 <span id="busuanzi_site_pv"></span> 次
+本站总访客数 <span id="busuanzi_site_uv"></span> 人
+
+<!--添加一个访问量-->
+<p><i class="fa fa-battery-3"></i> <span id="sitetime">Calculating…</span></p>
+<div class="heartbeat">❤</div> <span class="gradient-color-text">本站已稳定运行<uptime></uptime></span>
+<script>$((function(){var n,i=$("#gouog");i.hover((function(){clearInterval(n)}),(function(){n=setInterval((function(){var n,e;n=i.find("ul"),e=n.find("li:first").height(),n.animate({marginTop:-e+"px"},500,(function(){n.css({marginTop:0}).find("li:first").appendTo(n)}))}),2e3)})).trigger("mouseleave")}))</script>
+
+</center>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+<widget class="widget-wrapper user-card author"><div class="widget-body"><div class="avatar"><img class="lazy" type="img" id="avatar_url" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://bu.dusays.com/2024/02/06/65c1ce484c3da.jpg"></div><p class="username" ff="title" type="text" id="name">酷小呵</p><p class="bio" type="text" id="bio">公众号：酷小呵</p><a class="follow" href="/author/%E9%85%B7%E5%B0%8F%E5%91%B5/"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg>所有文章</a></div></widget>
+
+<widget class="widget-wrapper linklist"><div class="widget-body fs14">
+<div class="linklist left" style="grid-template-columns:repeat(1,1fr);">
+<a class="link" title="失效反馈" target="_blank" rel="noopener external nofollow noreferrer" href="https://flowus.cn/form/c3e42855-dc21-49c9-9292-09606f2984ff?code=14QS4G"><div class="flex"><svg t="1707471077217" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="34410" width="200" height="200"><path d="M320 405.333333m128 0l298.666667 0q128 0 128 128l0 234.666667q0 128-128 128l-298.666667 0q-128 0-128-128l0-234.666667q0-128 128-128Z" fill="#FF4D4F" opacity=".1" p-id="34411"></path><path d="M480 128a32 32 0 0 1 0 64H277.333333l-3.754666 0.106667A64 64 0 0 0 213.333333 256v512l0.106667 3.754667A64 64 0 0 0 277.333333 832h469.333334l3.754666-0.106667A64 64 0 0 0 810.666667 768V416a32 32 0 0 1 64 0V768a128 128 0 0 1-128 128H277.333333a128 128 0 0 1-128-128V256a128 128 0 0 1 128-128z m106.666667 533.333333a32 32 0 0 1 0 64h-234.666667a32 32 0 0 1 0-64h234.666667z m-128-149.333333a32 32 0 0 1 0 64h-106.666667a32 32 0 0 1 0-64h106.666667zM676.586667 192.597333l105.6 59.968-121.941334 207.701334-68.501333 28.8a20.437333 20.437333 0 0 1-26.666667-10.538667 19.733333 19.733333 0 0 1-1.493333-5.461333L554.666667 400.32l121.92-207.722667zM780.16 136.042667a59.434667 59.434667 0 0 1 22.314667 81.92l-10.176 17.28-105.578667-59.946667 10.154667-17.301333C713.749333 129.28 751.018667 119.466667 780.181333 136.042667z" fill="#FF4D4F" p-id="34412"></path></svg><span>失效反馈</span></div></a>
+<a class="link" title="我要投稿" target="_blank" rel="noopener external nofollow noreferrer" href="https://flowus.cn/form/1c671ca6-6893-47e8-808c-11217f4a318b?code=14QS4G"><div class="flex"><svg t="1707470076247" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="18302" width="200" height="200"><path d="M853.333333 56.888889c62.767407 0 113.777778 51.067259 113.777778 113.777778v682.666666c0 62.767407-51.01037 113.777778-113.777778 113.777778H170.666667c-62.710519 0-113.777778-51.01037-113.777778-113.777778V170.666667c0-62.710519 51.067259-113.777778 113.777778-113.777778zM544.180148 388.79763a45.454222 45.454222 0 0 0-64.360296 0l-12.325926 12.344889-34.417778 34.417777-15.739259 15.73926-24.082963 24.082963-8.89363 8.874666-16.440889 16.459852-7.585185 7.585185-7.149037 7.130074-18.830222 18.830223-2.74963 2.768592-5.195852 5.195852-11.093333 11.093333-3.678815 3.678815-1.687703 1.668741-7.774815 7.793778-4.171852 4.171851-0.227556 0.208593a45.454222 45.454222 0 0 0 0 64.360296 45.454222 45.454222 0 0 0 64.360297 0l104.353185-104.353185V785.066667a45.511111 45.511111 0 1 0 91.022222 0V530.849185l104.353185 104.353185a45.37837 45.37837 0 0 0 32.180148 13.330963 45.454222 45.454222 0 0 0 32.180149-77.691259l-52.110223-52.110222-10.391703-10.391704c-3.413333-3.375407-6.712889-6.693926-9.955556-9.955555l-35.498667-35.498667-7.793777-7.774815-7.35763-7.376592-3.527111-3.508149-6.712889-6.712889-12.136296-12.136296-7.945482-7.945481-2.427259-2.42726-6.656-6.656-2.010074-2.010074-5.347556-5.347555-7.793777-7.793778-2.42726-2.446222-1.953185-1.953185z" fill="#2B87FF" p-id="18303"></path><path d="M280.272593 280.272593a46.364444 46.364444 0 0 1 46.345481-46.345482h370.763852a46.326519 46.326519 0 1 1 0 92.690963H326.618074a46.364444 46.364444 0 0 1-46.326518-46.345481z" fill="#F0F0F0" p-id="18304"></path></svg><span>我要投稿</span></div></a></div></div></widget>
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%A6%E5%8F%B7%E6%B3%A8%E5%86%8C"><span class="toc-text">账号注册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2Alist"><span class="toc-text">部署Alist</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D"><span class="toc-text">绑定域名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B6%E5%B0%BE%E5%B7%A5%E4%BD%9C"><span class="toc-text">收尾工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%AE%9A%E6%97%B6SSH"><span class="toc-text">自动定时SSH</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF"><span class="toc-text">添加开机自启</span></a></li></ol></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js`,
+    marked: `https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+    
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
+
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.27.0" async></script>
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":"https://site.kuhehe.top/api/v1?url={href}"},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/flying-pages/2.1.2/flying-pages.min.js"></script><script defer src="https://cdn.bootcdn.net/ajax/libs/vanilla-lazyload/17.8.4/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.min.css`,
+    js: `https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/5.0.22/fancybox/fancybox.umd.min.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('ds-memos');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || null
+        }
+      });
+    })
+  }
+</script><script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          loop: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script><link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+<script defer src="https://gcore.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js" integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"></script>
+<script defer src="https://gcore.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"onload="renderMathInElement(document.body);"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+<script src="/js/uptime.js"></script><script src="/js/sousuo.js"></script><script src="/js/runtime.js"></script><script src="/js/loong.js"></script>
+</div>
+        <script src="//cdn.jsdelivr.net/npm/js-base64/base64.min.js"></script>
+        <script>
+        const hasAttr = (e,a) => a.some(_=> e.attr(_)!==undefined);
+        $('a').each(function() {
+          const $this = $(this);
+          if(hasAttr($this,["data-fancybox","ignore-external-link"])) return;
+          const href = $this.attr('href');
+          if (href && href.match('^((http|https|thunder|qqdl|ed2k|Flashget|qbrowser|ftp|rtsp|mms)://)')) {
+            const strs = href.split('/');
+            if (strs.length >= 3) {
+                const host = strs[2];
+                if (host !== 'kuhehe.github.io' || window.location.host) {
+                    $this.attr('href', '/go.html?u='+Base64.encode(href)+'').attr('rel', 'external nofollow noopener noreferrer');
+                    if (true) {
+                        $this.attr('target', '_blank');
+                    }
+                }
+            }
+          }
+        });
+        </script></body></html>

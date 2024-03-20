@@ -64,7 +64,7 @@
     --text-p3: #808080;
     --text-p4: #999;
     --text-meta: #ccc;
-    --text-code: #d57539;
+    --text-code: #df440d;
   }
 }
 @media (prefers-color-scheme: dark) {
@@ -87,7 +87,7 @@
     --text-p3: #858585;
     --text-p4: #707070;
     --text-meta: #4d4d4d;
-    --text-code: #d87f48;
+    --text-code: #f57e54;
   }
 }
 @media screen and (prefers-color-scheme: dark) and (max-width: 667px) {
