@@ -223,11 +223,6 @@ strong {
     background: linear-gradient(0, var(--theme-link-opa), var(--theme-link-opa)) no-repeat center bottom / 100% 40%;
 }
 
-.name {
-     color: hsl(237, 100%, 52%);
-}
-
-
 
 
  .overlay {
