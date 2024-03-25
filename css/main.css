@@ -5733,7 +5733,7 @@ details.toc[open] >div.body section .header+.doc_tree {
   object-fit: cover;
   width: 100%;
   border-radius: 0;
-  aspect-ratio: 3;
+  aspect-ratio: 2.3;
 }
 .post-list .post-card.post.photo .cover {
   position: relative;
@@ -5742,7 +5742,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 .post-list .post-card.post.photo .cover img {
   width: 100%;
   object-fit: cover;
-  aspect-ratio: 3;
+  aspect-ratio: 2.3;
 }
 .post-list .post-card.post.photo .cover .cover-info {
   padding: 1.5rem 1rem;
