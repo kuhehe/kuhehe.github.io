@@ -3,10 +3,10 @@
  * 优化了一些样式，使用 WTFPL 协议开源。
  */
 
-/* 字体：禁用浏览器合成的粗体 */
+/* 字体：禁用浏览器合成的粗体 
 :root {
   font-synthesis: style;
-}
+}*/
 
 /* 字体：为粗体使用荧光笔下划线效果，弥补禁用合成粗体的影响 */
 strong {
@@ -67,22 +67,53 @@ strong {
   background: var(--alpha75)
 }
 
-/* 文章卡片：深色模式阴影使用不那么明亮的主题颜色 */
+/* 文章卡片：深色模式阴影使用不那么明亮的主题颜色 
 @media (prefers-color-scheme: dark) {
   .post-list .post-card:hover {
     box-shadow: 0 0 1em var(--theme-link-opa);
   }
-}
+}*/
+
 
 /* 文章卡片：限制图片最大高度 */
 .post-list .post-card.post.photo .cover img {
   max-height: 256px;
 }
 
-/* 文章卡片：图片悬浮变得不那么暗 */
+/* 文章卡片：海报宽高比为2，限制海报最大高度 
+.post-list .post-card.post.photo .cover img {
+  aspect-ratio: 2;
+  max-height: 256px;
+}*/
+
+/* 文章卡片：封面底部渐变 */
+.post-list .post-card .post-cover {
+  position: relative;
+  z-index: -1;
+}
+
+/* 文章卡片：封面底部渐变 */
+.post-list .post-card .post-cover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 5rem;
+  background: linear-gradient(0, var(--card), transparent);
+}
+
+/* 文章卡片：标题位置修正 */
+.l_main .post-list .post-title {
+  margin-top: -4rem;
+}
+
+
+
+/* 文章卡片：图片悬浮变得不那么暗 
 .post-list.post .post-card:hover img {
   filter: brightness(75%);
-}
+}*/
 
 /* 页脚 Sitemap：背景动画、圆角大小修正 */
 .page-footer a {
@@ -90,10 +121,10 @@ strong {
   transition: background .2s;
 }
 
-/* 文章 Banner：长宽比改为2:1 */
+/* 文章 Banner：长宽比改为2:1 
 .article.banner .bg+.content {
   aspect-ratio: 2;
-}
+}*/
 
 /* 文章内链接：链接不使用文本颜色，下划线半透明 */
 li:not([class]) a:not([class]),
