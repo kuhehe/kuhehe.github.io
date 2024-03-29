@@ -2493,6 +2493,7 @@ a.tag-plugin.button:hover {
   display: block;
   object-fit: contain;
   height: 1.75em;
+  border-radius: 0;
 }
 .tag-plugin.folders {
   margin: var(--gap-p) 0;
