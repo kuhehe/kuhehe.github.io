@@ -1394,7 +1394,8 @@ div.toast.show {
 }
 .page-footer a {
   color: var(--text-p2);
-  border-radius: 2px;
+  border-radius: 4px;
+  transition: background 0.2s ease-out;
 }
 .page-footer a:hover {
   color: var(--text);
@@ -4400,7 +4401,7 @@ details.toc[open] >div.body section .header+.doc_tree {
   transform: translateX(-50%);
   border-radius: 2px;
   bottom: 2px;
-  background: var(--text-p1);
+  background: currentColor;
 }
 .nav-area {
   margin: 32px var(--gap-margin) 0;
@@ -4801,7 +4802,6 @@ details.toc[open] >div.body section .header+.doc_tree {
   font-weight: 500;
 }
 .widget-wrapper.post-list .widget-body a {
-  line-height: 1;
   font-size: 0.875rem;
   padding: 8px 16px;
   display: block;
