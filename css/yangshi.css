@@ -203,8 +203,11 @@ table a:not([class]) {
 
 article h2:not([class]) {
   background: linear-gradient(0, var(--text-meta), var(--text-meta)) no-repeat center bottom / 100% 2px;
-}
+} 
 
+/* article h2:not([class]) {
+background: linear-gradient(0, var(--theme-link-opa), var(--theme-link-opa)) no-repeat center bottom / 100% 40%;
+} */
 
 [data-sub] {
   display: inline-block;
