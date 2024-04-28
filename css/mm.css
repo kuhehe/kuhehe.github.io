@@ -1,0 +1,163 @@
+/* 
+YanJiuSuo
+*/
+/* css reset*/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td,img { margin:0; padding:0; }
+
+body { #background-color: #DA634B; #overflow: hidden; color:#555; font-size:13px; #font-family: "Microsoft YaHei",Simsun,Tahoma; }
+
+td,th,caption { font-size:14px; }
+
+/*
+h1, h2, h3, h4, h5, h6 { font-weight:normal; font-size:100%; }
+*/
+
+address, caption, cite, code, dfn, em, strong, th, var { font-style:normal; font-weight:normal; }
+
+a { color:#000; text-decoration:none; }
+
+a:hover { text-decoration:none; }
+
+img { border:none; }
+
+ol,ul,li { list-style:none;}
+
+input, textarea, select, button { font-size: 14px; }
+
+table { border-collapse:collapse; }
+
+html { overflow-y: scroll; }
+
+#container{width:1200px;margin:0 auto;margin-top:350px}
+
+.nav{width:100%;margin-bottom:10px;border-radius:2px;overflow:hidden}
+
+.nav li{float:left;text-align:center;display:block;width:75px;height:40px;line-height:40px;background:#e47653;font-size:18px;transition:color .5s,background-color .5s;overflow:hidden}
+
+.nav li:hover{color:#fff;background:#ff6ea1}
+
+.toptips{width:100%;background:#fffce7;margin-bottom:2px;border-radius:2px;overflow:hidden}
+
+.toptips li{float:left;position:relative;display:block;width:100%;height:40px;line-height:40px;font-size:13px;color:red;overflow:hidden}
+
+.toptips li b{width:16px;height:16px;font-weight:bold;background:#e47653;color:#fff;padding:2px 8px;margin-left:10px;font-size:12px;border-radius:2px}
+
+.good{width:100%;background:#fffce7;margin-bottom:5px;border-radius:2px;overflow:hidden}
+
+.good li{float:left;text-align:center;display:block;width:150px;height:40px;line-height:40px;font-size:13px;transition:color .5s,background-color .5s;overflow:hidden}
+
+.good li:hover{color:#fff;background:#ff6ea1}
+
+.cate{width:100%;background:#fff;margin-bottom:10px;border-radius:2px;overflow:hidden}
+
+.cate_name{height:40px;width:100%;background:#2cbafc;overflow:hidden}
+
+.cate .pink{background:#fd6ea3}
+
+.cate .red{background:#c52622}
+
+.cate .green{background:#23be9b}
+
+.cate .yellow{background:#fcc800}
+
+.cate .gray{background:#788daa}
+
+.cate .orange{background:#f76e25}
+
+.cate .black{background:#333}
+
+.cate_name p{font-size:18px;font-weight:700;line-height:40px;color:#fff;margin-left:20px}
+
+.cate li{float:left;text-align:center;display:block;width:119px;height:40px;line-height:40px;border-right:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;font-size:13px;transition:color .5s,background-color .5s;overflow:hidden}
+
+.cate li:hover{color:#fff;background:#ff6ea1}
+
+.cate li b{width:16px;height:16px;font-weight:400;background:#2cbafc;color:#fff;padding:1px 3px;margin-left:4px;font-size:12px;border-radius:2px}
+
+.cate_ul{margin:0 auto;position:relative;max-width:960px}
+
+.cate_img{margin-left:8px;width:48px;height:48px}
+
+.banner img{width:100%;margin-bottom:5px;transition:opacity .5s;border-radius:2px}
+
+.banner img:hover{opacity:.7}
+
+.footerapp img{width:100%;margin-bottom:-8px;transition:opacity .5s}
+
+.footerapp img:hover{opacity:.7}
+
+.footer{border-radius:5px 5px 0 0;height:auto;margin-bottom:0;opacity:.7}
+
+.footer p{text-align:center;line-height:40px;color:#333}
+
+.footer p a{color:#333}
+
+.clear{clear:both;height:0}
+
+.side{position:fixed;bottom:5px;width:70px;left:50%;margin-left:606px}
+
+.side_div{width:70px;height:32px;line-height:32px;text-align:center;color:#fff;margin-top:2px;border: 1px solid #e47653;border-radius:2px}
+
+.faq{position:fixed;bottom:5px;width:70px;right:50%;margin-right:606px}
+
+.faq_scj{width:70px;height:70px;line-height:32px;text-align:center;color:#fff;margin-top:1px}
+
+.faq_div{width:70px;height:32px;line-height:32px;text-align:center;color:#fff;margin-top:2px;border: 1px solid #e47653;border-radius:2px}
+
+.xm{position:fixed;bottom:0;left:initial;right:0;z-index:1;font-size:0;-webkit-transition:all .3s ease-in-out;transition:all .3s ease-in-out;-webkit-transform:translateY(3px);-ms-transform:translateY(3px);transform:translateY(3px)}
+
+.xm img{width:100px}
+#scj{background:url(/img/scj.png)}
+#top{background:url(/img/top.jpg)}
+#dizhi{background:url(/img/dizhi.jpg)}
+#guestbook{text-align:center;line-height:32px;transition:background-color .3s}
+#guestbook:hover{background:#fd6ea3}
+
+.btn {padding: 0;margin: 0;}
+
+.app {box-shadow: 0 0 15px rgba(100, 100, 100, 0.1);overflow: hidden;border-radius: 2px;background-color: #fff;}
+
+.navi {font-size:0;padding:5px;text-align: center;}
+
+.appico{width:calc(7.5% - 1px);margin:5px;height:auto;box-sizing:border-box;display:inline-block;position:relative}
+
+.appico p{width:100%;height:25px;line-height:25px;text-align:center;font-size:13px;margin:0;color:#000;overflow:hidden}
+
+.naicon{border-radius:5px;overflow:hidden;font-size:0;margin:12px}
+
+.appico img{width:100%}
+
+.appico:hover .btn-raised{-webkit-box-shadow:0 0 12px 4px rgba(0,0,0,.24),0 0 2px -2px rgba(0,0,0,.4),0 1px 12px 0 rgba(0,0,0,.22);box-shadow:0 0 12px 4px rgba(0,0,0,.24),0 0 2px -2px rgba(0,0,0,.4),0 1px 12px 0 rgba(0,0,0,.22)}
+
+@media screen and (max-width:1200px){.side{display:none}
+.faq{display:none}
+.xm{display:none}
+}
+
+@media screen and (max-width:960px){body{background-size:150%}
+#container{width:98%;margin-top:40%}
+.nav li{width:20%;margin-right:-2px;height:35px;line-height:35px}
+.toptips li{width:100%;margin-right:-2px;height:35px;line-height:35px}
+.good li{width:25%;height:35px;line-height:35px}
+.cate li{width:20%;margin-right:-1px;height:35px;line-height:35px}
+.cate_name{height:35px}
+.cate_name p{font-size:21px;line-height:35px}
+.appico {width: calc(25% - 10px)}
+}
+
+@media screen and (max-width:800px){.nav li{font-size:15px;height:30px;line-height:30px}
+.toptips li{font-size:14px;height:auto;line-height:30px}
+.good li{font-size:15px;height:30px;line-height:30px}
+.cate li{font-size:15px;height:30px;line-height:30px}
+.cate_name{height:30px}
+.cate_name p{font-size:20px;line-height:30px}
+}
+
+@media screen and (max-width:640px){.nav li{width:25%;font-size:12px;height:30px;border:1px solid #da634b;line-height:30px}
+.toptips li{width:100%;font-size:12px;height:auto;line-height:30px}
+.good li{width:25%;font-size:11px;height:30px;line-height:30px}
+.cate li{width:25%;font-size:11px;height:30px;line-height:30px}
+.cate_name{height:30px}
+.cate_name p{font-size:17px;line-height:30px}
+.cate li b{width:16px;height:16px;font-weight:400;background:#2cbafc;color:#fff;padding:2px 3px;margin-left:4px;font-size:11px;border-radius:2px}
+}
