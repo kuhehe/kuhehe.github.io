@@ -361,3 +361,16 @@ strong {
   }
 }
 
+
+
+.guigui_copy {
+	font-weight: bold;
+	background: -webkit-linear-gradient(45deg, #eb685c, #c5e886, #5c8ceb, #e872de, #0da2aa);
+	background: -moz-linear-gradient(45deg, #eb685c, #c5e886, #5c8ceb, #e872de, #0da2aa);
+	background: ms-linear-gradient(45deg, #eb685c, #c5e886, #5c8ceb, #e872de, #0da2aa);
+	background: linear-gradient(45deg, #eb685c, #c5e886, #5c8ceb, #e872de, #0da2aa);
+	color: transparent;
+	-webkit-background-clip: text;
+	background-clip: text;
+	animation: guigui_move 20s linear infinite
+}
