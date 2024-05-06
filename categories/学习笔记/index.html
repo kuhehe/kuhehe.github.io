@@ -106,7 +106,7 @@
 本站总访客数 <span id="busuanzi_site_uv"></span> 人
 
 <!--添加一个访问量-->
-<p><i class="fa fa-battery-3"></i> <span id="sitetime">Calculating…</span></p>
+<i class="fa fa-battery-3"></i> <span id="sitetime">Calculating...</span>
 <div class="heartbeat">❤</div> <span class="gradient-color-text">本站已稳定运行<uptime></uptime></span>
 <script>$((function(){var n,i=$("#gouog");i.hover((function(){clearInterval(n)}),(function(){n=setInterval((function(){var n,e;n=i.find("ul"),e=n.find("li:first").height(),n.animate({marginTop:-e+"px"},500,(function(){n.css({marginTop:0}).find("li:first").appendTo(n)}))}),2e3)})).trigger("mouseleave")}))</script>
 
@@ -560,4 +560,25 @@
 
 <!-- inject -->
 <script src="/js/uptime.js"></script><script src="/js/sousuo.js"></script><script src="/js/runtime.js"></script><script src="/js/loong.js"></script><script src="/js/find.js"></script><script async src="/js/stellar-safego.js"></script>
-</div></body></html>
+</div>
+        <script src="//cdn.jsdelivr.net/npm/js-base64/base64.min.js"></script>
+        <script>
+        const hasAttr = (e,a) => a.some(_=> e.attr(_)!==undefined);
+        $('a').each(function() {
+          const $this = $(this);
+          if(hasAttr($this,["data-fancybox","ignore-external-link"])) return;
+          const href = $this.attr('href');
+          if (href && href.match('^((http|https|thunder|qqdl|ed2k|Flashget|qbrowser|ftp|rtsp|mms)://)')) {
+            const strs = href.split('/');
+            if (strs.length >= 3) {
+                const host = strs[2];
+                if (host !== 'kuhehe.github.io' || window.location.host) {
+                    $this.attr('href', '/go.html?u='+Base64.encode(href)+'').attr('rel', 'external nofollow noopener noreferrer');
+                    if (true) {
+                        $this.attr('target', '_blank');
+                    }
+                }
+            }
+          }
+        });
+        </script></body></html>

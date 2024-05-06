@@ -93,7 +93,7 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><p>
+  </div><article class="md-text content"><p><p></p>
 <p>
 
 <link rel="stylesheet" href="/css/52.css">
@@ -139,8 +139,7 @@
       <li><a href="/" target="_blank" title="待" style="color:#000000">待更新</a></li>
             <br class="clear">    </ul>
 
-<br>
-
+<p><br></p>
 <ul class="cate" id="cate-1">
 <div class="cate_name">
 <h2><p>ACG动漫</p></h2></div>
@@ -193,7 +192,6 @@
 
 
 <div class="tag-plugin colorful note" color="orange"><div class="body"><p><strong>注意：</strong></p><p>本站展示的网站均来源于网络，其所有行为与本站无关！</p><p>如果你有更好的网站 (这里没有的)，<br>可以点击<a target="_blank" rel="noopener external nofollow noreferrer" href="https://flowus.cn/form/1c671ca6-6893-47e8-808c-11217f4a318b?code=14QS4G">这里</a> <strong>投稿</strong>，我看到就会更新到这里，感谢支持！！！</p></div></div>
-
 <h2 id="待更新"><a href="#待更新" class="headerlink" title="待更新"></a>待更新</h2></article>
 <div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">回顾上一篇</div><a href="/%E7%AC%94%E8%AE%B0/2">💦 影视软件</a></div><div class="item" id="next"><div class="note">接下来阅读</div><a href="/%E7%AC%94%E8%AE%B0/4">💦 阅读软件</a></div></section></div>
 
@@ -211,7 +209,7 @@
 本站总访客数 <span id="busuanzi_site_uv"></span> 人
 
 <!--添加一个访问量-->
-<p><i class="fa fa-battery-3"></i> <span id="sitetime">Calculating…</span></p>
+<i class="fa fa-battery-3"></i> <span id="sitetime">Calculating...</span>
 <div class="heartbeat">❤</div> <span class="gradient-color-text">本站已稳定运行<uptime></uptime></span>
 <script>$((function(){var n,i=$("#gouog");i.hover((function(){clearInterval(n)}),(function(){n=setInterval((function(){var n,e;n=i.find("ul"),e=n.find("li:first").height(),n.animate({marginTop:-e+"px"},500,(function(){n.css({marginTop:0}).find("li:first").appendTo(n)}))}),2e3)})).trigger("mouseleave")}))</script>
 
@@ -670,4 +668,25 @@
 
 <!-- inject -->
 <script src="/js/uptime.js"></script><script src="/js/sousuo.js"></script><script src="/js/runtime.js"></script><script src="/js/loong.js"></script><script src="/js/find.js"></script><script async src="/js/stellar-safego.js"></script>
-</div></body></html>
+</div>
+        <script src="//cdn.jsdelivr.net/npm/js-base64/base64.min.js"></script>
+        <script>
+        const hasAttr = (e,a) => a.some(_=> e.attr(_)!==undefined);
+        $('a').each(function() {
+          const $this = $(this);
+          if(hasAttr($this,["data-fancybox","ignore-external-link"])) return;
+          const href = $this.attr('href');
+          if (href && href.match('^((http|https|thunder|qqdl|ed2k|Flashget|qbrowser|ftp|rtsp|mms)://)')) {
+            const strs = href.split('/');
+            if (strs.length >= 3) {
+                const host = strs[2];
+                if (host !== 'kuhehe.github.io' || window.location.host) {
+                    $this.attr('href', '/go.html?u='+Base64.encode(href)+'').attr('rel', 'external nofollow noopener noreferrer');
+                    if (true) {
+                        $this.attr('target', '_blank');
+                    }
+                }
+            }
+          }
+        });
+        </script></body></html>

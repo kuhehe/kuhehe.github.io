@@ -92,6 +92,10 @@
   <div class='post-list'>
     <article class='' id='tags'>
       
+        <a class='tag' href="/tags/Stellar/">
+          <span class='name'>Stellar</span>
+        </a>
+      
         <a class='tag' href="/tags/%E6%AF%8F%E6%97%A5%E5%88%86%E4%BA%AB/">
           <span class='name'>每日分享</span>
         </a>
@@ -100,12 +104,12 @@
           <span class='name'>alist</span>
         </a>
       
-        <a class='tag' href="/tags/Stellar/">
-          <span class='name'>Stellar</span>
-        </a>
-      
         <a class='tag' href="/tags/%E7%9F%A5%E4%B9%8E%E7%9B%90%E9%80%89/">
           <span class='name'>知乎盐选</span>
+        </a>
+      
+        <a class='tag' href="/tags/%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98/">
+          <span class='name'>博客主题</span>
         </a>
       
         <a class='tag' href="/tags/%E5%90%83%E7%93%9C%E7%BE%A4/">
@@ -122,6 +126,10 @@
       
         <a class='tag' href="/tags/stellar/">
           <span class='name'>stellar</span>
+        </a>
+      
+        <a class='tag' href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+          <span class='name'>学习笔记</span>
         </a>
       
         <a class='tag' href="/tags/TVbox/">
@@ -144,28 +152,12 @@
           <span class='name'>文字转语音</span>
         </a>
       
-        <a class='tag' href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-          <span class='name'>学习笔记</span>
-        </a>
-      
         <a class='tag' href="/tags/%E6%B0%B8%E7%A1%95E%E7%9B%98/">
           <span class='name'>永硕E盘</span>
         </a>
       
-        <a class='tag' href="/tags/%E8%80%83%E7%A0%94/">
-          <span class='name'>考研</span>
-        </a>
-      
-        <a class='tag' href="/tags/%E8%80%83%E7%A0%94%E8%8B%B1%E8%AF%AD/">
-          <span class='name'>考研英语</span>
-        </a>
-      
         <a class='tag' href="/tags/%E6%B5%81%E9%87%8F%E5%8D%A1/">
           <span class='name'>流量卡</span>
-        </a>
-      
-        <a class='tag' href="/tags/%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98/">
-          <span class='name'>博客主题</span>
         </a>
       
         <a class='tag' href="/tags/%E9%98%85%E8%AF%BB/">
@@ -176,16 +168,20 @@
           <span class='name'>开源阅读</span>
         </a>
       
-        <a class='tag' href="/tags/serv00/">
-          <span class='name'>serv00</span>
-        </a>
-      
         <a class='tag' href="/tags/%E6%BA%90%E4%BB%93%E5%BA%93/">
           <span class='name'>源仓库</span>
         </a>
       
         <a class='tag' href="/tags/%E9%98%85%E8%AF%BB%E4%B9%A6%E6%BA%90/">
           <span class='name'>阅读书源</span>
+        </a>
+      
+        <a class='tag' href="/tags/%E8%80%83%E7%A0%94/">
+          <span class='name'>考研</span>
+        </a>
+      
+        <a class='tag' href="/tags/serv00/">
+          <span class='name'>serv00</span>
         </a>
       
         <a class='tag' href="/tags/%E5%BD%B1%E8%A7%86%E7%BD%91%E7%AB%99/">
@@ -198,6 +194,10 @@
       
         <a class='tag' href="/tags/%E7%BD%91%E7%9B%98%E8%B5%84%E6%BA%90/">
           <span class='name'>网盘资源</span>
+        </a>
+      
+        <a class='tag' href="/tags/%E8%80%83%E7%A0%94%E8%8B%B1%E8%AF%AD/">
+          <span class='name'>考研英语</span>
         </a>
       
         <a class='tag' href="/tags/%E6%95%99%E7%A8%8B/">
@@ -223,7 +223,7 @@
 本站总访客数 <span id="busuanzi_site_uv"></span> 人
 
 <!--添加一个访问量-->
-<p><i class="fa fa-battery-3"></i> <span id="sitetime">Calculating…</span></p>
+<i class="fa fa-battery-3"></i> <span id="sitetime">Calculating...</span>
 <div class="heartbeat">❤</div> <span class="gradient-color-text">本站已稳定运行<uptime></uptime></span>
 <script>$((function(){var n,i=$("#gouog");i.hover((function(){clearInterval(n)}),(function(){n=setInterval((function(){var n,e;n=i.find("ul"),e=n.find("li:first").height(),n.animate({marginTop:-e+"px"},500,(function(){n.css({marginTop:0}).find("li:first").appendTo(n)}))}),2e3)})).trigger("mouseleave")}))</script>
 
@@ -677,4 +677,25 @@
 
 <!-- inject -->
 <script src="/js/uptime.js"></script><script src="/js/sousuo.js"></script><script src="/js/runtime.js"></script><script src="/js/loong.js"></script><script src="/js/find.js"></script><script async src="/js/stellar-safego.js"></script>
-</div></body></html>
+</div>
+        <script src="//cdn.jsdelivr.net/npm/js-base64/base64.min.js"></script>
+        <script>
+        const hasAttr = (e,a) => a.some(_=> e.attr(_)!==undefined);
+        $('a').each(function() {
+          const $this = $(this);
+          if(hasAttr($this,["data-fancybox","ignore-external-link"])) return;
+          const href = $this.attr('href');
+          if (href && href.match('^((http|https|thunder|qqdl|ed2k|Flashget|qbrowser|ftp|rtsp|mms)://)')) {
+            const strs = href.split('/');
+            if (strs.length >= 3) {
+                const host = strs[2];
+                if (host !== 'kuhehe.github.io' || window.location.host) {
+                    $this.attr('href', '/go.html?u='+Base64.encode(href)+'').attr('rel', 'external nofollow noopener noreferrer');
+                    if (true) {
+                        $this.attr('target', '_blank');
+                    }
+                }
+            }
+          }
+        });
+        </script></body></html>
