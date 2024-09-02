@@ -133,3 +133,5 @@ table a:not([class]) {
   color: var(--theme-link);
   background: linear-gradient(0, var(--theme-link-opa), var(--theme-link-opa)) no-repeat center bottom / 100% 2px;
 }
+
+
