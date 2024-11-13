@@ -4301,11 +4301,16 @@ p>strong>span.tag-plugin.icon {
   text-align: justify;
   margin-top: 0.5rem;
 }
+.tag-plugin.tabs .tab-content .tab-pane {
+  display: block;
+}
 .tag-plugin.tabs .tab-content .tab-pane:not(.active) {
-  display: none;
+  visibility: hidden;
+  height: 0;
 }
 .tag-plugin.tabs .tab-content .tab-pane.active {
-  display: block;
+  visibility: visible;
+  height: auto;
 }
 .tag-plugin.tabs .tab-content:has(.grid-box) {
   width: 100%;
